@@ -28,8 +28,6 @@ const CodeEditor = ({ isCoding, onEditorClose }: EditorPropTypes) => {
           Undo</button>
         <button onClick={()=> {this.refs.editor.editor.redo()}}>
           Redo</button> */}
-        <button onClick={()=> {alert('submit');}}>
-          Submit</button>
       </div>
 
       <button onClick={onEditorClose } className="modal-info__close" type="button">
