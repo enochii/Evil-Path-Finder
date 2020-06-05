@@ -10,12 +10,13 @@ import ModalError from 'components/ModalError/ModalError';
 import { Context, type ContextType } from 'Provider';
 import Helmet from 'react-helmet';
 import './Container.scss';
+import CodeEditor from 'components/Editor/Editor';
 
 Modal.setAppElement('#root');
 
 const Container = () => {
   const context = useContext(Context);
-  const { isPathExist, clear, isHelped, setIsHelped }: ContextType = context;
+  const { isPathExist, clear, isHelped, setIsHelped,  isCoding, setIsCoding }: ContextType = context;
   const [isErrorOpen, setIsErrorOpen] = useState(false);
 
   useEffect(() => {
@@ -31,6 +32,9 @@ const Container = () => {
   const onHelpClose = () => {
     setIsHelped(false);
   };
+  const onEditorClose = () => {
+    setIsCoding(false);
+  }
 
   return (
     <>
@@ -52,6 +56,7 @@ const Container = () => {
       </header>
       <ModalError isErrorOpen={isErrorOpen} onErrorClose={onErrorClose} />
       <ModalInfo isHelped={isHelped} onHelpClose={onHelpClose} />
+      <CodeEditor isCoding={isCoding} onEditorClose={onEditorClose} />
       <Header />
       <Board />
       <footer className="footer">

@@ -3,6 +3,7 @@
 ### Technique
 
 - React
+- scss
 
 ### Run
 

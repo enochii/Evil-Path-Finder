@@ -5,6 +5,7 @@
 .flowconfig
 .prettierrc
 env.ps1
+note.md
 
 # dependencies
 /node_modules

@@ -36,6 +36,7 @@ const Header = () => {
     setIsPathExist,
     setIsVisualized,
     setIsHelped,
+    setIsCoding,
   } = context;
 
   const onAlgoChange = (e: ElementEvent<HTMLSelectElement>) => {
@@ -89,6 +90,10 @@ const Header = () => {
 
   const onHelp = () => {
     setIsHelped(true);
+  };
+
+  const onCoding = () => {
+    setIsCoding(true);
   };
 
   return (
@@ -158,6 +163,14 @@ const Header = () => {
         type="button"
       >
         How to use?
+      </button>
+      <button
+        className="content-header__button--usage"
+        onClick={onCoding}
+        disabled={isVisualized && !pause}
+        type="button"
+      >
+        Code Editor
       </button>
     </div>
   );

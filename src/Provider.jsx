@@ -20,6 +20,7 @@ export type ContextType = {|
   isPathExist: boolean,
   isVisualized: boolean,
   isHelped: boolean,
+  isCoding: boolean,
 
   begin: { current: PositionType },
   end: { current: PositionType },
@@ -35,6 +36,7 @@ export type ContextType = {|
   setIsPathExist: boolean => void,
   setIsVisualized: boolean => void,
   setIsHelped: boolean => void,
+  setIsCoding: boolean => void,
 |};
 
 const Context = createContext<ContextType>();
@@ -43,6 +45,8 @@ const Provider = ({ children }: Node) => {
   const [isPathExist, setIsPathExist] = useState<boolean>(true);
   const [isVisualized, setIsVisualized] = useState<boolean>(false);
   const [isHelped, setIsHelped] = useState<boolean>(false);
+  // 代码编辑器是否打开
+  const [isCoding, setIsCoding] = useState<boolean>(false);
 
   const begin = useRef<PositionType>({ x: Math.round(BOARD_ROW / 2), y: 2 });
   const end = useRef<PositionType>({
@@ -102,6 +106,7 @@ const Provider = ({ children }: Node) => {
         isPathExist,
         isVisualized,
         isHelped,
+        isCoding,
 
         // Methods
         clear,
@@ -110,6 +115,7 @@ const Provider = ({ children }: Node) => {
         setIsPathExist,
         setIsVisualized,
         setIsHelped,
+        setIsCoding,
 
         // Refs
         pathFinder,

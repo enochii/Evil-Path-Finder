@@ -1,0 +1,65 @@
+@import 'open-color/open-color';
+@import 'styles/_mixins';
+@import 'styles/_placeholders';
+@import 'styles/_variables';
+
+
+// #editor {
+//   position: relative;
+//   height: 300px;
+//   width: 200px;
+//   padding: 10px;
+//   border: 1px solid #e5e5e5;
+//   border-radius: 2px;
+//   font-size: 15px;
+// }
+
+.modal-editor {
+  $self: &;
+  @include modal($oc-indigo-7);
+  width: 700px;
+  height: 600px;
+  padding: 20px;
+  align-items: center;
+
+  &__title {
+    @include modal-title($oc-indigo-7);
+  }
+
+  &__color {
+    margin-bottom: 20px;
+  }
+
+  &__usage {
+    #{$self}__row {
+      margin-bottom: 20px;
+    }
+
+    #{$self}__square {
+      margin-right: 10px;
+    }
+
+    h2 {
+      margin-right: 10px;
+      font-size: 20px;
+    }
+  }
+
+  &__row {
+    display: flex;
+    align-items: center;
+  }
+
+  &__content {
+    @extend %modal-content;
+    width: 150px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  &__close {
+    @include modal-close($oc-indigo-7);
+  }
+}

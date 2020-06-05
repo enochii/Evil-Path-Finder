@@ -55,7 +55,7 @@ const Board = () => {
   };
 
   const onMouseMove = (e: ElementEvent<HTMLDivElement>) => {
-    console.log('onmove');
+    // console.log('onmove');
     if (isVisualized) return;
     if (e.target.className !== 'board__item') return;
     const ridx = Number(e.target.dataset.ridx);
