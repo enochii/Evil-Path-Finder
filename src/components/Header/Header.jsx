@@ -14,7 +14,7 @@ import {
   DELAY_FASTEST,
 } from 'constants.js';
 import { Context, type ContextType } from 'Provider';
-import PathFinder from 'algorithms/index';
+import PathfinderMap, {PathfinderMapType} from 'algorithms/index';
 import { FaPause, FaPlay } from 'react-icons/fa';
 import './Header.scss';
 
@@ -23,6 +23,9 @@ const Header = () => {
   const [type, setType] = useState<string>(DIJKSTRA);
   const [pause, setPause] = useState<boolean>(false);
   const context = useContext<ContextType>(Context);
+  // 用于更新 header 的可选算法
+  // algorithm name -> class
+  const [pfMap, setPfMap] = useState<PathfinderMapType>(PathfinderMap);
   const {
     begin,
     end,
@@ -52,7 +55,7 @@ const Header = () => {
     clearPath();
     setIsVisualized(true);
 
-    pathFinder.current = new PathFinder[type]({
+    pathFinder.current = new pfMap[type]({
       begin: begin.current,
       end: end.current,
       updateItem,

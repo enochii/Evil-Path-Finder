@@ -7,14 +7,14 @@ import AStar from './AStar';
 import Dfs from './dfs';
 import Bfs from './bfs';
 
-type PathfinderType = {
+export type PathfinderMapType = {
   [key: string]: | typeof Dijkstra
     | typeof BellmanFord
     | typeof AStar
     | typeof Dfs,
 };
 
-const Pathfinder: PathfinderType = {
+const PathfinderMap: PathfinderMapType = {
   [DIJKSTRA]: Dijkstra,
   [BELLMAN_FORD]: BellmanFord,
   [A_STAR]: AStar,
@@ -22,4 +22,4 @@ const Pathfinder: PathfinderType = {
   [BFS]: Bfs,
 };
 
-export default Pathfinder;
+export default PathfinderMap;
