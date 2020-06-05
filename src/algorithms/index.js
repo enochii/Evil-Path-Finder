@@ -14,7 +14,7 @@ export type PathfinderMapType = {
     | typeof Dfs,
 };
 
-const PathfinderMap: PathfinderMapType = {
+const pathfinderMap: PathfinderMapType = {
   [DIJKSTRA]: Dijkstra,
   [BELLMAN_FORD]: BellmanFord,
   [A_STAR]: AStar,
@@ -22,4 +22,4 @@ const PathfinderMap: PathfinderMapType = {
   [BFS]: Bfs,
 };
 
-export default PathfinderMap;
+export default pathfinderMap;

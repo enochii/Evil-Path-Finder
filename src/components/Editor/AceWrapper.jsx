@@ -4,12 +4,14 @@ import AceEditor from "react-ace";
 import "ace-builds/src-noconflict/mode-javascript";
 import "ace-builds/src-noconflict/theme-tomorrow";
 import "ace-builds/src-noconflict/ext-language_tools";
+import {addAlgo} from "./evil";
 
 
 const AceWrapper = () => {
   async function onSubmit() {
     const { codeText } = state;
     console.log(codeText);
+    addAlgo('Test', codeText);
   }
 
   const onChange = (newValue) => {
@@ -38,6 +40,9 @@ const AceWrapper = () => {
           enableLiveAutocompletion: true,
           enableSnippets: true
         }}
+        width="1100px"
+        height="750px"
+        fontSize="18px"
          // 这个不加字符串都被codeText吃了，啥都没了
         value={state.codeText}
       />

@@ -14,7 +14,7 @@ import {
   DELAY_FASTEST,
 } from 'constants.js';
 import { Context, type ContextType } from 'Provider';
-import PathfinderMap, {PathfinderMapType} from 'algorithms/index';
+import pathfinderMap, {PathfinderMapType} from 'algorithms/index';
 import { FaPause, FaPlay } from 'react-icons/fa';
 import './Header.scss';
 
@@ -25,7 +25,7 @@ const Header = () => {
   const context = useContext<ContextType>(Context);
   // 用于更新 header 的可选算法
   // algorithm name -> class
-  const [pfMap, setPfMap] = useState<PathfinderMapType>(PathfinderMap);
+  const [pfMap, setPfMap] = useState<PathfinderMapType>(pathfinderMap);
   const {
     begin,
     end,
@@ -55,7 +55,9 @@ const Header = () => {
     clearPath();
     setIsVisualized(true);
 
-    pathFinder.current = new pfMap[type]({
+    console.log(type);
+    console.log(pathfinderMap[type]);
+    pathFinder.current = new pathfinderMap[type]({
       begin: begin.current,
       end: end.current,
       updateItem,
@@ -114,6 +116,7 @@ const Header = () => {
         <option value={BFS}>0-1 BFS</option>
         <option value={DFS}>DFS</option>
         <option value={A_STAR}>A*</option>
+        <option value={'Test'}>Test</option>
       </select>
       <select
         className="content-header__select"

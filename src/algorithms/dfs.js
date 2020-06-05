@@ -4,11 +4,11 @@ import { BOARD_ROW, BOARD_COL, ITEM_CLICKED, ITEM_VISITED } from 'constants.js';
 import PathFinder, { type ConstructorType } from './pathFinder';
 
 export default class Dfs extends PathFinder {
-  find: boolean;
+  find = false;
 
-  visited: Array<Array<boolean>>;
+  visited = undefined;
 
-  constructor(args: ConstructorType) {
+  constructor(args) {
     super(args);
     this.find = false;
     this.visited = [];
@@ -17,7 +17,7 @@ export default class Dfs extends PathFinder {
     }
   }
 
-  _dfs = (x: number, y: number, timeFactor: number) => {
+  _dfs = (x, y, timeFactor) => {
     const { prev, end, visited, board, updateItem, _dfs } = this;
     visited[x][y] = true;
 
@@ -43,7 +43,7 @@ export default class Dfs extends PathFinder {
     }
   };
 
-  execute = (): boolean => {
+  execute = () => {
     this._dfs(this.begin.x, this.begin.y, 1);
     if (!this.find) this.clearTimers();
     return this.find;
