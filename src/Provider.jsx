@@ -53,6 +53,7 @@ const Provider = ({ children }: Node) => {
     x: Math.round(BOARD_ROW / 2),
     y: BOARD_COL - 3,
   });
+  // board 可变，BOARD 不可变
   const board = useRef<Array<Array<string>>>(JSON.parse(JSON.stringify(BOARD)));
   const setItemCache = useRef<SetItemCacheType>({});
   const pathFinder = useRef<any>(null);
@@ -76,6 +77,8 @@ const Provider = ({ children }: Node) => {
     } else {
       setItem(type);
     }
+    // console.log(board);
+    // console.log(BOARD);
   };
 
   const clear = () => {

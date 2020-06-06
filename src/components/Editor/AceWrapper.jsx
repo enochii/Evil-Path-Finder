@@ -23,7 +23,7 @@ const AceWrapper = () => {
   }
 
   const [state, setState] = useState({
-    codeText: '',
+    codeText: init_code,
   });
   
   // functional editor component
@@ -51,5 +51,35 @@ const AceWrapper = () => {
     </div>
   );
 }
+
+const init_code = 
+"// 使用须知以下常量定义：\n\
+// BOARD_ROW|   BOARD_COL|      ITEM_CLICKED|          ITEM_VISITED\n\
+// 行数         列数            该格子已经被占用        该格子已经被访问过\n\
+\n\
+class MyAlgoName extends PathFinder {\n\
+  constructor(args) {\n\
+    super(args);\n\
+    this.find = false;\n\
+  }\n\
+\n\
+// 类成员和方法须知（使用 this.* 进行调用）：\n\
+// 在访问一个节点后，请执行以下调用\n\
+// updateItem(nextX, nextY, ITEM_VISITED, 1);（可视化点状态）\n\
+// prev[x][y] 表示(x,y)的祖先节点，请使用以下代码进行链接（可视化路径）\n\
+// prev[x][y] = { x: i, y: j };\n\
+// begin / end：起点 / 终点\n\
+// board[x][y]：(x,y) 的状态\n\
+\n\
+  execute = () => {\n\
+    // const { prev, end, board, updateItem } = this;\n\
+    // 这里写入你算法的主要逻辑\n\
+    \n\
+    // END \n\
+    if (!this.find) this.clearTimers();\n\
+    return this.find;\n\
+  };\n\
+}\n\
+"
 
 export default AceWrapper;
