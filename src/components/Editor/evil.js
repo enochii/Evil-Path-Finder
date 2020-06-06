@@ -34,9 +34,11 @@ export function addAlgo(name, code) {
         // todo : 这里删除掉
         pathfinderMap[name] = cls;
         console.log(cls); alert('代码成功上传啦');
+        return true;
     } catch (error) {
         console.log(error);
         alert(error);
+        return false;
     }
     
 }

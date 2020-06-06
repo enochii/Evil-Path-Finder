@@ -23,8 +23,8 @@ const AceWrapper = () => {
   async function onSubmit() {
     const { codeText } = state;
     console.log(codeText);
-    addAlgo('Test', codeText);
-    setIsCoding(false);
+    var succ = addAlgo('Test', codeText);
+    if(succ) setIsCoding(false);
   }
 
   const onChange = (newValue) => {
