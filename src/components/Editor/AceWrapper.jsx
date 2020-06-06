@@ -5,9 +5,14 @@ import "ace-builds/src-noconflict/mode-javascript";
 import "ace-builds/src-noconflict/theme-tomorrow";
 import "ace-builds/src-noconflict/ext-language_tools";
 import {addAlgo, getInitCode, saveInitCode} from "./evil";
+import { useContext } from "react";
+import { Context } from "Provider";
 
 
 const AceWrapper = () => {
+  const context = useContext(Context);
+  const {setIsCoding} = context;
+
   function resetCode() {
     saveInitCode(init_code);
     setState({
@@ -19,6 +24,7 @@ const AceWrapper = () => {
     const { codeText } = state;
     console.log(codeText);
     addAlgo('Test', codeText);
+    setIsCoding(false);
   }
 
   const onChange = (newValue) => {
