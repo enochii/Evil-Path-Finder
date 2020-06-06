@@ -1,7 +1,7 @@
 import PriorityQueue from 'js-priority-queue';
 import Queue from 'queue-fifo';
 
-import {BOARD_ROW,BOARD_COL,ITEM_CLICKED,ITEM_VISITED} from '../../constants.js'
+import {BOARD_ROW,BOARD_COL,ITEM_CLICKED,ITEM_VISITED, INITIAL_COLOR} from '../../constants.js'
 import PathFinder from 'algorithms/pathFinder'
 import pathfinderMap from 'algorithms/index'
 
@@ -14,6 +14,7 @@ function runCodeWithEnv(obj){
 }
 
 export function addAlgo(name, code) {
+    saveInitCode(code); // 保存用户编辑过的代码
     // 加入 local storage
     storeLocal(name, code);
     // map
@@ -27,8 +28,19 @@ export function addAlgo(name, code) {
 }
 
 function storeLocal(name, code) {
-    if(localStorage.getItem(name) === null) {
+    if(!(localStorage.getItem(name) === null)) {
         console.log('update ' + name);
     }
     localStorage.setItem(name, code);
 }
+
+export function getInitCode() {
+    return localStorage.getItem(INTI_CODE_KEY);
+}
+
+// 可以考虑做一个 save 按钮或者 Ctrl+S
+export function saveInitCode(code) {
+    storeLocal(INTI_CODE_KEY, code); // 可用于恢复用户编辑过的代码
+}
+
+const INTI_CODE_KEY = 'init-code';

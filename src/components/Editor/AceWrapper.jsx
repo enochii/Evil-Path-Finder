@@ -4,10 +4,17 @@ import AceEditor from "react-ace";
 import "ace-builds/src-noconflict/mode-javascript";
 import "ace-builds/src-noconflict/theme-tomorrow";
 import "ace-builds/src-noconflict/ext-language_tools";
-import {addAlgo} from "./evil";
+import {addAlgo, getInitCode, saveInitCode} from "./evil";
 
 
 const AceWrapper = () => {
+  function resetCode() {
+    saveInitCode(init_code);
+    setState({
+      codeText: init_code,
+    });
+  }
+
   async function onSubmit() {
     const { codeText } = state;
     console.log(codeText);
@@ -23,7 +30,7 @@ const AceWrapper = () => {
   }
 
   const [state, setState] = useState({
-    codeText: init_code,
+    codeText: getEditedCode(),
   });
   
   // functional editor component
@@ -48,8 +55,17 @@ const AceWrapper = () => {
       />
       <button onClick={()=> {onSubmit()}}>
           Submit</button>
+          {/* 重置代码 */}
+      <button onClick={()=>{resetCode()}}>
+          Reset</button>
     </div>
   );
+}
+
+
+function getEditedCode() {
+  var code = getInitCode();
+  return (code===null)?init_code:code;
 }
 
 const init_code = 
