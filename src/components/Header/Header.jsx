@@ -17,6 +17,7 @@ import { Context, type ContextType } from 'Provider';
 import pathfinderMap, {PathfinderMapType} from 'algorithms/index';
 import { FaPause, FaPlay } from 'react-icons/fa';
 import './Header.scss';
+import AlgoSelector from './AlgoSelector';
 
 
 const Header = () => {
@@ -27,6 +28,7 @@ const Header = () => {
   // algorithm name -> class
   const [pfMap, setPfMap] = useState<PathfinderMapType>(pathfinderMap);
   const {
+    algorithms,
     begin,
     end,
     updateItem,
@@ -41,7 +43,7 @@ const Header = () => {
     setIsHelped,
     setIsCoding,
   } = context;
-
+  
   const onAlgoChange = (e: ElementEvent<HTMLSelectElement>) => {
     setType(e.target.value);
   };
@@ -103,7 +105,7 @@ const Header = () => {
 
   return (
     <div className="content-header">
-      <select
+      {/* <select
         className="content-header__select"
         onChange={onAlgoChange}
         id="algorithm"
@@ -117,7 +119,9 @@ const Header = () => {
         <option value={DFS}>DFS</option>
         <option value={A_STAR}>A*</option>
         <option value={'Test'}>Test</option>
-      </select>
+      </select> */}
+      {/* const numbers = [1, 2, 3, 4, 5]; */}
+      <AlgoSelector  onAlgoChange={onAlgoChange}/>
       <select
         className="content-header__select"
         onChange={onDelayChange}

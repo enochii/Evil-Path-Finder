@@ -53,14 +53,14 @@ const Container = () => {
       <Header />
       <Board />
       <footer className="footer">
-        <p className="footer__author">Made by Haram Bae</p>
-        <a
+        <p className="footer__author">Powered By SCH001 With <span style={{color:"red"}}>❤</span></p>
+        {/* <a
           href="https://github.com/"
           target="_blank"
           rel="noopener noreferrer"
         >
           <FaGithub className="footer__github" />
-        </a>
+        </a> */}
       </footer>
     </>
   );

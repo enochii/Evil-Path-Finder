@@ -11,10 +11,15 @@ import {
   ITEM_CLICKED,
   BOARD_ROW,
   BOARD_COL,
+  BELLMAN_FORD,
+  BFS,
+  DFS,
+  A_STAR,
 } from './constants';
 
 type PositionType = {| x: number, y: number |};
 type SetItemCacheType = { [key: string]: (string) => void };
+
 
 export type ContextType = {|
   isPathExist: boolean,
@@ -28,6 +33,7 @@ export type ContextType = {|
   setItemCache: { current: SetItemCacheType },
   pathFinder: { current: any },
   delay: { current: number },
+  algorithms: {current: Array<string>},
 
   clear: void => void,
   clearPath: void => void,
@@ -40,6 +46,7 @@ export type ContextType = {|
 |};
 
 const Context = createContext<ContextType>();
+const ALGOS = [BELLMAN_FORD, BFS, DFS, A_STAR, 'TEST'];
 
 const Provider = ({ children }: Node) => {
   const [isPathExist, setIsPathExist] = useState<boolean>(true);
@@ -47,6 +54,7 @@ const Provider = ({ children }: Node) => {
   const [isHelped, setIsHelped] = useState<boolean>(false);
   // 代码编辑器是否打开
   const [isCoding, setIsCoding] = useState<boolean>(false);
+  const algorithms = useRef<Array<string>>(ALGOS);
 
   const begin = useRef<PositionType>({ x: Math.round(BOARD_ROW / 2), y: 2 });
   const end = useRef<PositionType>({
@@ -127,6 +135,7 @@ const Provider = ({ children }: Node) => {
         board,
         setItemCache,
         delay,
+        algorithms,
       }}
     >
       {children}

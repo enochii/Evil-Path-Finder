@@ -4,8 +4,7 @@ import Queue from 'queue-fifo';
 import {BOARD_ROW,BOARD_COL,ITEM_CLICKED,ITEM_VISITED, INITIAL_COLOR} from '../../constants.js'
 import PathFinder from 'algorithms/pathFinder'
 import pathfinderMap from 'algorithms/index'
-import { useContext } from 'react';
-import { Context } from 'Provider.jsx';
+
 
 // 单纯的 eval 只能引用局部变量
 // function 可以利用绑定
@@ -15,8 +14,8 @@ function runCodeWithEnv(obj){
     );
 }
 
-
 export function addAlgo(name, code) {
+
     saveInitCode(code); // 保存用户编辑过的代码
     // 加入 local storage
     storeLocal(name, code);
@@ -31,10 +30,11 @@ export function addAlgo(name, code) {
         var cls = runCodeWithEnv(wrapped_code);
         // name -> cls
         pathfinderMap[cls.name] = cls;
+        
         // todo : 这里删除掉
         pathfinderMap[name] = cls;
         console.log(cls); alert('代码成功上传啦');
-        return true;
+        return cls.name;
     } catch (error) {
         console.log(error);
         alert(error);

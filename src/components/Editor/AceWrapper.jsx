@@ -11,7 +11,7 @@ import { Context } from "Provider";
 
 const AceWrapper = () => {
   const context = useContext(Context);
-  const {setIsCoding} = context;
+  const {setIsCoding, algorithms} = context;
 
   function resetCode() {
     saveInitCode(init_code);
@@ -24,7 +24,12 @@ const AceWrapper = () => {
     const { codeText } = state;
     console.log(codeText);
     var succ = addAlgo('Test', codeText);
-    if(succ) setIsCoding(false);
+    if(succ) {
+      // console.log(succ);
+      algorithms.current = algorithms.current.concat(succ);
+      // console.log(algorithms);
+      setIsCoding(false);
+    }
   }
 
   const onChange = (newValue) => {

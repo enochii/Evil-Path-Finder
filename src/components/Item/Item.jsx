@@ -2,6 +2,7 @@
 
 import React, { useState, useContext, useEffect } from 'react';
 import { Context } from 'Provider';
+import {CSSTransition} from 'react-transition-group'; // ES6
 import {
   INITIAL_COLOR,
   VISITED_COLOR,
@@ -43,7 +44,7 @@ const Item = ({ ridx, cidx }: { ridx: number, cidx: number }) => {
       pathFinder.current.clearTimers();
       setIsVisualized(false);
     }
-  }, [type, end, pathFinder, ridx, cidx, setIsVisualized]);
+  }, [type, end, pathFinder, ridx, cidx, setIsVisualized]); // 仅在这些值更改时进行更新
 
   const getColor = () => {
     if (
@@ -65,6 +66,7 @@ const Item = ({ ridx, cidx }: { ridx: number, cidx: number }) => {
   };
 
   return (
+    // <CSSTransition in="true" timeout={200} classNames="example">
     <div
       className="board__item"
       data-type={type}
@@ -74,6 +76,7 @@ const Item = ({ ridx, cidx }: { ridx: number, cidx: number }) => {
         backgroundColor: getColor(),
       }}
     />
+    // </CSSTransition>
   );
 };
 
