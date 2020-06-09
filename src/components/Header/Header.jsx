@@ -125,7 +125,7 @@ const Header = () => {
       <select
         className="content-header__select"
         onChange={onDelayChange}
-        defaultValue={300}
+        defaultValue={DELAY_FAST}
         disabled={isVisualized}
       >
         <option value={DELAY_SLOW}>slowest</option>

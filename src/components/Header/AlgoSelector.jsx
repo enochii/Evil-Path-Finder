@@ -8,10 +8,9 @@ import { Context} from '../../Provider.jsx';
 
 const AlgoSelector = (props) => {
     const context = useContext(Context);
-    const {isVisualized, algorithms, end} = context;
+    const {isVisualized, algorithms} = context;
     
     console.log(props);
-    console.log(end);
     const onAlgoChange = props.onAlgoChange;
     const listItems = algorithms.current.map((algo_name) =><option key={algo_name}> {algo_name}</option>);
 

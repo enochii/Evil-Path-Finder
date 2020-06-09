@@ -5,7 +5,7 @@ import Timer from 'algorithms/Timer';
 import {
   BOARD,
   KEYS,
-  DELAY_NORMAL,
+  DELAY_FAST,
   ITEM_INITIAL,
   ITEM_FIXED,
   ITEM_CLICKED,
@@ -65,7 +65,7 @@ const Provider = ({ children }: Node) => {
   const board = useRef<Array<Array<string>>>(JSON.parse(JSON.stringify(BOARD)));
   const setItemCache = useRef<SetItemCacheType>({});
   const pathFinder = useRef<any>(null);
-  const delay = useRef<number>(DELAY_NORMAL);
+  const delay = useRef<number>(DELAY_FAST);
 
   const updateItem = (
     ridx,
