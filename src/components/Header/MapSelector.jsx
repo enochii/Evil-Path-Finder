@@ -1,6 +1,6 @@
 import React, {useState, useContext} from "react";
 import { Context} from '../../Provider.jsx';
-import { MGRandom } from "mapGeneration/random.js";
+import MgRandom from "mapGeneration/MgRandom.js";
 
 
 const RANDOM = 'random';
@@ -8,11 +8,10 @@ const PH = 'place holder';
 const mapAlgos = [PH, RANDOM];
 const MapSelector = () => {
     const context = useContext(Context);
-    const {isVisualized, updateItem, clear} = context;
+    const {isVisualized, updateItem, clear, startr, startc, endr, endc} = context;
     
     const MapGenerationMap = {
-        [RANDOM]: MGRandom,
-        [PH]: clear
+        [RANDOM]: MgRandom,
     };
 
     // 地图生成算法
@@ -23,9 +22,10 @@ const MapSelector = () => {
         clear();
         // 调用函数
         var algoName = e.target.value;
-        console.log(algoName);
-        var mgalgo = MapGenerationMap[algoName];
-        mgalgo(updateItem);
+        // console.log(algoName);
+        console.log(startr, startc, endr, endc);
+        var mgalgo = new MapGenerationMap[algoName]({startr, startc, endr, endc, updateItem});
+        mgalgo.excute(updateItem);
     }
     
     const listItems = mapAlgos.map((algo_name) =><option key={algo_name}> {algo_name}</option>);

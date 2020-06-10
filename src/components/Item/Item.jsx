@@ -2,7 +2,7 @@
 
 import React, { useState, useContext, useEffect } from 'react';
 import { Context } from 'Provider';
-import {CSSTransition} from 'react-transition-group'; // ES6
+// import {CSSTransition} from 'react-transition-group'; // ES6
 import {
   INITIAL_COLOR,
   VISITED_COLOR,

@@ -66,6 +66,11 @@ const Provider = ({ children }: Node) => {
   const setItemCache = useRef<SetItemCacheType>({});
   const pathFinder = useRef<any>(null);
   const delay = useRef<number>(DELAY_FAST);
+  // board 的 开始与结束
+  const [startc, setStartc] = useState(0);
+  const [startr, setStartr] = useState(0);
+  const [endc, setEndc] = useState(BOARD_COL);
+  const [endr, setEndr] = useState(BOARD_ROW);
 
   const updateItem = (
     ridx,
@@ -127,6 +132,10 @@ const Provider = ({ children }: Node) => {
         setIsVisualized,
         setIsHelped,
         setIsCoding,
+        setStartc,
+        setStartr,
+        setEndc,
+        setEndr,
 
         // Refs
         pathFinder,
@@ -136,6 +145,10 @@ const Provider = ({ children }: Node) => {
         setItemCache,
         delay,
         algorithms,
+        startc,
+        startr,
+        endr,
+        endc
       }}
     >
       {children}

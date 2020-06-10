@@ -2,7 +2,7 @@
 
 import React, { useContext, useState, useRef } from 'react';
 import { Context, type ContextType } from 'Provider';
-import { KEYS, BOARD, ITEM_CLICKED, ITEM_INITIAL } from 'constants.js';
+import { KEYS, BOARD, ITEM_CLICKED, ITEM_INITIAL, ITEM_WALL } from 'constants.js';
 import './Board.scss';
 import Item from '../Item/Item';
 
@@ -58,6 +58,9 @@ const Board = () => {
     // console.log('onmove');
     if (isVisualized) return;
     if (e.target.className !== 'board__item') return;
+    const { type } = e.target.dataset;
+    if(type == ITEM_WALL) return;
+
     const ridx = Number(e.target.dataset.ridx);
     const cidx = Number(e.target.dataset.cidx);
 
