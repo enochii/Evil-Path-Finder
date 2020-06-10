@@ -34,7 +34,7 @@ export default class Dijkstra extends PathFinder {
           dist[currentX][currentY] + 1 >= dist[nextX][nextY]
         )
           continue;
-        if (board[nextX][nextY] === ITEM_CLICKED) continue;
+        if (!this.canItemVisit(nextX, nextY)) continue;
 
         board[nextX][nextY] = ITEM_VISITED;
         updateItem(nextX, nextY, ITEM_VISITED, currentD);

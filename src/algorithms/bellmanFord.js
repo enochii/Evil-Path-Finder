@@ -1,6 +1,6 @@
 // @flow
 
-import { BOARD_ROW, BOARD_COL, ITEM_CLICKED, ITEM_VISITED } from 'constants.js';
+import { BOARD_ROW, BOARD_COL, ITEM_VISITED } from 'constants.js';
 import PathFinder from './pathFinder';
 
 export default class BellmanFord extends PathFinder {
@@ -23,7 +23,7 @@ export default class BellmanFord extends PathFinder {
             continue;
           if (dist[i][j] === Infinity || dist[i][j] + 1 >= dist[nextX][nextY])
             continue;
-          if (board[nextX][nextY] === ITEM_CLICKED) continue;
+          if (!this.canItemVisit(nextX, nextY)) continue;
 
           dist[nextX][nextY] = dist[i][j] + 1;
           prev[nextX][nextY] = { x: i, y: j };

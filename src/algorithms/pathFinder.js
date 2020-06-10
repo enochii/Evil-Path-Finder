@@ -1,6 +1,6 @@
 // @flow
 
-import { BOARD_ROW, BOARD_COL, ITEM_SHORTEST } from 'constants.js';
+import { BOARD_ROW, BOARD_COL, ITEM_SHORTEST, ITEM_CLICKED, ITEM_WALL } from 'constants.js';
 import Timer from './Timer';
 
 export type ConstructorType = {
@@ -56,6 +56,11 @@ export default class PathFinder {
     this.dist[this.begin.x][this.begin.y] = 0;
   };
 
+  canItemVisit(nx, ny) {
+    var state = this.board[nx][ny];
+    return state != ITEM_CLICKED && state != ITEM_WALL;
+  }
+  
   clearTimers() {
     this.timers.forEach((timer: Timer) => {
       timer.destroy();

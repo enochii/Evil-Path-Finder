@@ -1,6 +1,6 @@
 // @flow
 
-import { BOARD_ROW, BOARD_COL, ITEM_CLICKED, ITEM_VISITED } from 'constants.js';
+import { BOARD_ROW, BOARD_COL, ITEM_VISITED } from 'constants.js';
 import PathFinder, { type ConstructorType } from './pathFinder';
 
 export default class Dfs extends PathFinder {
@@ -23,7 +23,7 @@ export default class Dfs extends PathFinder {
 
       if (nextX < 0 || nextX >= BOARD_ROW || nextY < 0 || nextY >= BOARD_COL)
         continue;
-      if (this.visited[nextX][nextY] || board[nextX][nextY] === ITEM_CLICKED)
+      if (this.visited[nextX][nextY] || !this.canItemVisit(nextX, nextY))
         continue;
 
       prev[nextX][nextY] = { x, y };

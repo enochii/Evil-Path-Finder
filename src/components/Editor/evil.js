@@ -68,13 +68,20 @@ function preprocessCode(code :String){
     var noComments = [];
 
     for(var i=0;i<codes.length;i++) {
-        if((codes[i][0] == '/' && codes[i][1] == '/') || codes[i].length==0) {
+        if((codes[i][0] == '/' && codes[i][1] == '/') || allBlank(codes[i])) {
             // console.log(codes[i]);
         } else {
+            // console.log('line: ', i+1);
+            if(i == 3) console.log(codes[i].length, '(', codes[i].charCodeAt(), ')');
             noComments.push(codes[i]);
         }
     }
     var ret = noComments.join('\n')
     // console.log(ret);
     return ret;
+}
+
+// todo: 这样可以处理 \r\n 和 \n 应该
+function allBlank(line) {
+    return line.replace(/\r/g, "").length == 0;
 }

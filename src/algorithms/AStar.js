@@ -1,7 +1,7 @@
 // @flow
 
 import PriorityQueue from 'js-priority-queue';
-import { BOARD_ROW, BOARD_COL, ITEM_CLICKED, ITEM_VISITED } from 'constants.js';
+import { BOARD_ROW, BOARD_COL, ITEM_VISITED } from 'constants.js';
 import PathFinder, { type ConstructorType } from './pathFinder';
 
 export default class AStar extends PathFinder {
@@ -51,7 +51,7 @@ export default class AStar extends PathFinder {
 
         if (nextX < 0 || nextX >= BOARD_ROW || nextY < 0 || nextY >= BOARD_COL)
           continue;
-        if (board[nextX][nextY] === ITEM_CLICKED) continue;
+        if (!this.canItemVisit(nextX, nextY)) continue;
 
         const g = dist[currentX][currentY] + 1;
         const nextF = g + _h({ x: nextX, y: nextY });

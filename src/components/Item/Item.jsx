@@ -14,6 +14,8 @@ import {
   CLICKED_COLOR,
   ITEM_SHORTEST,
   SHORTEST_COLOR,
+  ITEM_WALL,
+  WALL_COLOR,
 } from 'constants.js';
 import './Item.scss';
 
@@ -53,6 +55,7 @@ const Item = ({ ridx, cidx }: { ridx: number, cidx: number }) => {
     ) {
       return FIXED_COLOR;
     }
+    // todo: 把常量换成数字，做个数组
     if (type === ITEM_VISITED) {
       return VISITED_COLOR;
     }
@@ -61,6 +64,9 @@ const Item = ({ ridx, cidx }: { ridx: number, cidx: number }) => {
     }
     if (type === ITEM_SHORTEST) {
       return SHORTEST_COLOR;
+    }
+    if(type === ITEM_WALL) {
+      return WALL_COLOR;
     }
     return INITIAL_COLOR;
   };

@@ -4,13 +4,15 @@ import { MGRandom } from "mapGeneration/random.js";
 
 
 const RANDOM = 'random';
-const mapAlgos = ['place holder', RANDOM];
+const PH = 'place holder';
+const mapAlgos = [PH, RANDOM];
 const MapSelector = () => {
     const context = useContext(Context);
-    const {isVisualized, updateItem} = context;
+    const {isVisualized, updateItem, clear} = context;
     
     const MapGenerationMap = {
         [RANDOM]: MGRandom,
+        [PH]: clear
     };
 
     // 地图生成算法
@@ -18,6 +20,7 @@ const MapSelector = () => {
     const onMapAlgoChange = (e: ElementEvent<HTMLSelectElement>) => {
         // setType(e.target.value);
         console.log('清除地图并生成新地图');
+        clear();
         // 调用函数
         var algoName = e.target.value;
         console.log(algoName);

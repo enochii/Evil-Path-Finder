@@ -11,6 +11,7 @@ export const VISITED_COLOR = Styles.visitedColor;
 export const CLICKED_COLOR = Styles.clickedColor;
 export const FIXED_COLOR = Styles.fixedColor;
 export const SHORTEST_COLOR = Styles.shortestColor;
+export const WALL_COLOR = Styles.wallColor;
 // export const COLOR_TYPES = [
 //   'initial',
 //   'visited',
@@ -41,6 +42,7 @@ export const ITEM_INITIAL = 'ITEM_INITIAL';
 export const ITEM_VISITED = 'ITEM_VISITED';
 export const ITEM_CLICKED = 'ITEM_CLICKED';
 export const ITEM_SHORTEST = 'ITEM_SHORTEST';
+export const ITEM_WALL = 'ITEM_WALL';
 
 // Delay
 export const DELAY_SLOWEST = 550;

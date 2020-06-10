@@ -1,7 +1,7 @@
 // @flow
 
 import Queue from 'queue-fifo';
-import { BOARD_ROW, BOARD_COL, ITEM_CLICKED, ITEM_VISITED } from 'constants.js';
+import { BOARD_ROW, BOARD_COL, ITEM_VISITED } from 'constants.js';
 import PathFinder, { type ConstructorType } from './pathFinder';
 
 export default class Bfs extends PathFinder {
@@ -39,7 +39,7 @@ export default class Bfs extends PathFinder {
 
         if (nextX < 0 || nextX >= BOARD_ROW || nextY < 0 || nextY >= BOARD_COL)
           continue;
-        if (visited[nextX][nextY] || board[nextX][nextY] === ITEM_CLICKED)
+        if (visited[nextX][nextY] || !this.canItemVisit(nextX, nextY))
           continue;
 
         visited[nextX][nextY] = true;
