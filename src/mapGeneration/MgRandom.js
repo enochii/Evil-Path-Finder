@@ -8,6 +8,7 @@ export default class MgRandom extends MgBase {
     }
 
     excute = () => {
+        console.log(this.updateBoardSize(14,28));
         for(var i=this.startc; i < this.endc; i++) {
             // console.log('??');
             this.updateItem(0, i, ITEM_WALL);

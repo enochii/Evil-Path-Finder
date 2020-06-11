@@ -1,7 +1,7 @@
 // @flow
 
 import PriorityQueue from 'js-priority-queue';
-import { BOARD_ROW, BOARD_COL, ITEM_VISITED } from 'constants.js';
+import {    ITEM_VISITED } from 'constants.js';
 import PathFinder, { type ConstructorType } from './pathFinder';
 
 export default class AStar extends PathFinder {
@@ -9,9 +9,9 @@ export default class AStar extends PathFinder {
 
   constructor(args: ConstructorType) {
     super(args);
-    this.opened = new Array(BOARD_ROW);
-    for (let i = 0; i < BOARD_ROW; i++) {
-      this.opened[i] = new Array(BOARD_COL).fill(false);
+    this.opened = new Array(this.board.length);
+    for (let i = 0; i < this.board.length; i++) {
+      this.opened[i] = new Array(this.board[0].length).fill(false);
     }
     this.pq = new PriorityQueue<Object>({ comparator: (a, b) => a.f - b.f });
   }
@@ -49,7 +49,7 @@ export default class AStar extends PathFinder {
         const nextX: number = currentX + PathFinder.dx[i];
         const nextY: number = currentY + PathFinder.dy[i];
 
-        if (nextX < 0 || nextX >= BOARD_ROW || nextY < 0 || nextY >= BOARD_COL)
+        if (nextX < 0 || nextX >= this.board.length || nextY < 0 || nextY >= this.board[0].length)
           continue;
         if (!this.canItemVisit(nextX, nextY)) continue;
 

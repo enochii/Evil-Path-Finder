@@ -80,6 +80,7 @@ const Item = ({ ridx, cidx }: { ridx: number, cidx: number }) => {
       data-cidx={cidx}
       style={{
         backgroundColor: getColor(),
+        // boxShadow: 
       }}
     />
     // </CSSTransition>

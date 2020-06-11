@@ -1,7 +1,7 @@
 // @flow
 
 import Queue from 'queue-fifo';
-import { BOARD_ROW, BOARD_COL, ITEM_VISITED } from 'constants.js';
+import {    ITEM_VISITED } from 'constants.js';
 import PathFinder, { type ConstructorType } from './pathFinder';
 
 export default class Bfs extends PathFinder {
@@ -13,8 +13,8 @@ export default class Bfs extends PathFinder {
     super(args);
     this.visited = [];
     this.q = new Queue();
-    for (let i = 0; i < BOARD_ROW; i++) {
-      this.visited[i] = Array(BOARD_COL).fill(false);
+    for (let i = 0; i < this.board.length; i++) {
+      this.visited[i] = Array(this.board[0].length).fill(false);
     }
   }
 
@@ -37,7 +37,7 @@ export default class Bfs extends PathFinder {
         const nextX = current.x + PathFinder.dx[i];
         const nextY = current.y + PathFinder.dy[i];
 
-        if (nextX < 0 || nextX >= BOARD_ROW || nextY < 0 || nextY >= BOARD_COL)
+        if (nextX < 0 || nextX >= this.board.length || nextY < 0 || nextY >= this.board[0].length)
           continue;
         if (visited[nextX][nextY] || !this.canItemVisit(nextX, nextY))
           continue;

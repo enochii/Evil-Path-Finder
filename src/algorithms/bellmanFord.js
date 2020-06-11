@@ -1,6 +1,6 @@
 // @flow
 
-import { BOARD_ROW, BOARD_COL, ITEM_VISITED } from 'constants.js';
+import {   ITEM_VISITED } from 'constants.js';
 import PathFinder from './pathFinder';
 
 export default class BellmanFord extends PathFinder {
@@ -8,17 +8,17 @@ export default class BellmanFord extends PathFinder {
     const { dist, prev, end, updateItem, board } = this;
     let find = false;
     let time = timeFactor;
-    for (let i = 0; i < BOARD_ROW; i++) {
-      for (let j = 0; j < BOARD_COL; j++) {
+    for (let i = 0; i < this.board.length; i++) {
+      for (let j = 0; j < this.board[0].length; j++) {
         for (let k = 0; k < PathFinder.dx.length; k++) {
           const nextX = i + PathFinder.dx[k];
           const nextY = j + PathFinder.dy[k];
 
           if (
             nextX < 0 ||
-            nextX >= BOARD_ROW ||
+            nextX >= this.board.length ||
             nextY < 0 ||
-            nextY >= BOARD_COL
+            nextY >= this.board[0].length
           )
             continue;
           if (dist[i][j] === Infinity || dist[i][j] + 1 >= dist[nextX][nextY])
@@ -47,7 +47,7 @@ export default class BellmanFord extends PathFinder {
 
     let timeFactor = 1;
     let find = false;
-    const vertex = BOARD_ROW * BOARD_COL;
+    const vertex = this.board.length * this.board[0].length;
     for (let i = 1; i <= vertex - 1; i++) {
       const relaxedResult = _relax(timeFactor);
       timeFactor = relaxedResult.time;

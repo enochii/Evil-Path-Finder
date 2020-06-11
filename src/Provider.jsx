@@ -31,6 +31,7 @@ export type ContextType = {|
   end: { current: PositionType },
   board: { current: Array<Array<string>> },
   setItemCache: { current: SetItemCacheType },
+  setBoardSizeHook:{ current: Array<void> } , // 补丁
   pathFinder: { current: any },
   delay: { current: number },
   algorithms: {current: Array<string>},
@@ -38,6 +39,7 @@ export type ContextType = {|
   clear: void => void,
   clearPath: void => void,
   updateItem: (number, number, string, number) => void,
+  updateBoardSize: (number, number) => void,
 
   setIsPathExist: boolean => void,
   setIsVisualized: boolean => void,
@@ -64,13 +66,36 @@ const Provider = ({ children }: Node) => {
   // board 可变，BOARD 不可变
   const board = useRef<Array<Array<string>>>(JSON.parse(JSON.stringify(BOARD)));
   const setItemCache = useRef<SetItemCacheType>({});
-  const pathFinder = useRef<any>(null);
+  const pathFinder = useRef<Array<void>>(null);
   const delay = useRef<number>(DELAY_FAST);
+  const setBoardSizeHook = useRef<any>(null);
   // board 的 开始与结束
-  const [startc, setStartc] = useState(0);
-  const [startr, setStartr] = useState(0);
-  const [endc, setEndc] = useState(BOARD_COL);
-  const [endr, setEndr] = useState(BOARD_ROW);
+  // const [startc, setStartc] = useState(0);
+  // const [startr, setStartr] = useState(0);
+  // const [endc, setEndc] = useState(BOARD_COL);
+  // const [endr, setEndr] = useState(BOARD_ROW);
+
+  function createArray(length) {
+    var arr = new Array(length || 0),
+        i = length;
+
+    if (arguments.length > 1) {
+        var args = Array.prototype.slice.call(arguments, 1);
+        while(i--) arr[length-1 - i] = createArray.apply(this, args);
+    } else {
+		while(i-- > 0) arr[i] = ITEM_INITIAL;
+    }
+
+    return arr;
+  }
+
+  const updateBoardSize = (br, bc) => {
+    board.current = createArray(br, bc);
+    const setRow = setBoardSizeHook.current[0];
+    const setCol = setBoardSizeHook.current[1];
+    setRow(br);
+    setCol(bc);
+  }
 
   const updateItem = (
     ridx,
@@ -132,10 +157,11 @@ const Provider = ({ children }: Node) => {
         setIsVisualized,
         setIsHelped,
         setIsCoding,
-        setStartc,
-        setStartr,
-        setEndc,
-        setEndr,
+        updateBoardSize,
+        // setStartc,
+        // setStartr,
+        // setEndc,
+        // setEndr,
 
         // Refs
         pathFinder,
@@ -143,12 +169,13 @@ const Provider = ({ children }: Node) => {
         end,
         board,
         setItemCache,
+        setBoardSizeHook,
         delay,
         algorithms,
-        startc,
-        startr,
-        endr,
-        endc
+        // startc,
+        // startr,
+        // endr,
+        // endc
       }}
     >
       {children}

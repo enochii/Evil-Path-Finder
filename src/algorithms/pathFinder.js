@@ -1,6 +1,6 @@
 // @flow
 
-import { BOARD_ROW, BOARD_COL, ITEM_SHORTEST, ITEM_CLICKED, ITEM_WALL } from 'constants.js';
+import {   ITEM_SHORTEST, ITEM_CLICKED, ITEM_WALL } from 'constants.js';
 import Timer from './Timer';
 
 export type ConstructorType = {
@@ -33,9 +33,9 @@ export default class PathFinder {
     this.begin = begin;
     this.end = end;
     this.updateItem = updateItem;
-    this._init();
     this.board = board;
     this.timers = [];
+    this._init();
   }
 
   static dx = [-1, 1, 0, 0];
@@ -43,12 +43,12 @@ export default class PathFinder {
   static dy = [0, 0, -1, 1];
 
   _init = () => {
-    this.dist = new Array(BOARD_ROW);
-    this.prev = new Array(BOARD_ROW);
-    for (let i = 0; i < BOARD_ROW; i++) {
+    this.dist = new Array(this.board.length);
+    this.prev = new Array(this.board.length);
+    for (let i = 0; i < this.board.length; i++) {
       this.dist[i] = [];
       this.prev[i] = [];
-      for (let j = 0; j < BOARD_COL; j++) {
+      for (let j = 0; j < this.board[0].length; j++) {
         this.dist[i][j] = Infinity;
         this.prev[i][j] = { x: -1, y: -1 };
       }

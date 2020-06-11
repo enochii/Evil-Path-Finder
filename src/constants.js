@@ -1,7 +1,7 @@
 import uuidv4 from 'uuid/v4';
 import Styles from 'styles/_variables.scss';
 
-// Board Size
+// Board Size(初始)
 export const BOARD_ROW = Number(Styles.boardRow);
 export const BOARD_COL = Number(Styles.boardCol);
 

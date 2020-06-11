@@ -2,13 +2,20 @@
 
 import React, { useContext, useState, useRef } from 'react';
 import { Context, type ContextType } from 'Provider';
-import { KEYS, BOARD, ITEM_CLICKED, ITEM_INITIAL, ITEM_WALL } from 'constants.js';
+import { KEYS, BOARD, ITEM_CLICKED, ITEM_INITIAL, ITEM_WALL, BOARD_COL, BOARD_ROW } from 'constants.js';
 import './Board.scss';
 import Item from '../Item/Item';
 
 const Board = () => {
   const context = useContext<ContextType>(Context);
-  const { updateItem, begin, end, isVisualized } = context;
+  const { updateItem, begin, end, isVisualized, board, setBoardSizeHook } = context;
+
+  const [boardRow, setBoardRow] = useState(BOARD_ROW);
+  const [boardCol, setBoardCol] = useState(BOARD_COL);
+
+  // Hook
+  setBoardSizeHook.current = [setBoardRow, setBoardCol];
+
   const [clicking, setClicking] = useState<boolean>(false);
   const [dragging, setDragging] = useState<{| begin: boolean, end: boolean |}>({
     begin: false,
@@ -97,7 +104,7 @@ const Board = () => {
       role="button"
       tabIndex="0"
     >
-      {BOARD.map((row, ridx) => (
+      {board.current.map((row, ridx) => (
         // eslint-disable-next-line react/no-array-index-key
         <div className="board__row" key={ridx}>
           {row.map((col, cidx) => (

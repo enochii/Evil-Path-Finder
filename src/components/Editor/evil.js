@@ -8,6 +8,7 @@ import pathfinderMap from 'algorithms/index'
 
 // 单纯的 eval 只能引用局部变量
 // function 可以利用绑定
+// todo : -> board.length
 function runCodeWithEnv(obj){
     return Function('"use strict";return (' + obj + ')')()(
         PathFinder, BOARD_ROW,BOARD_COL,ITEM_CLICKED,ITEM_VISITED

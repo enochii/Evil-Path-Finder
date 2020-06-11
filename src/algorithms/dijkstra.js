@@ -1,7 +1,7 @@
 // @flow
 
 import PriorityQueue from 'js-priority-queue';
-import { BOARD_ROW, BOARD_COL, ITEM_CLICKED, ITEM_VISITED } from 'constants.js';
+import {   ITEM_CLICKED, ITEM_VISITED } from 'constants.js';
 import PathFinder, { type ConstructorType } from './pathFinder';
 
 export default class Dijkstra extends PathFinder {
@@ -27,7 +27,7 @@ export default class Dijkstra extends PathFinder {
         const nextX = currentX + PathFinder.dx[i];
         const nextY = currentY + PathFinder.dy[i];
 
-        if (nextX < 0 || nextX >= BOARD_ROW || nextY < 0 || nextY >= BOARD_COL)
+        if (nextX < 0 || nextX >= this.board.length || nextY < 0 || nextY >= this.board[0].length)
           continue;
         if (
           dist[currentX][currentY] === Infinity ||
