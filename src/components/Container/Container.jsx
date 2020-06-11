@@ -11,6 +11,7 @@ import { Context, type ContextType } from 'Provider';
 import Helmet from 'react-helmet';
 import './Container.scss';
 import CodeEditor from 'components/Editor/Editor';
+import Switcher from 'components/Header/Switcher';
 
 Modal.setAppElement('#root');
 
@@ -51,6 +52,7 @@ const Container = () => {
       <ModalInfo isHelped={isHelped} onHelpClose={onHelpClose} />
       <CodeEditor isCoding={isCoding} onEditorClose={onEditorClose} />
       <Header />
+      <Switcher />
       <Board />
       <footer className="footer">
         <p className="footer__author">Powered By SCH001 With <span style={{color:"red"}}>❤</span></p>

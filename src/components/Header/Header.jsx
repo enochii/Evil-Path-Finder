@@ -19,6 +19,7 @@ import { FaPause, FaPlay } from 'react-icons/fa';
 import './Header.scss';
 import AlgoSelector from './AlgoSelector';
 import MapSelector from './MapSelector';
+import SizeSlider from './SizeSlider';
 
 
 const Header = () => {
@@ -115,13 +116,9 @@ const Header = () => {
         <option value={DIJKSTRA} defaultChecked>
           Dijkstra
         </option>
-        <option value={BELLMAN_FORD}>Bellman-Ford</option>
-        <option value={BFS}>0-1 BFS</option>
-        <option value={DFS}>DFS</option>
-        <option value={A_STAR}>A*</option>
-        <option value={'Test'}>Test</option>
       </select> */}
-      {/* const numbers = [1, 2, 3, 4, 5]; */}
+      {/* <div> */}
+      <SizeSlider test={"sch"}/>
       <MapSelector />
       <AlgoSelector  onAlgoChange={onAlgoChange}/>
       <select
@@ -136,6 +133,9 @@ const Header = () => {
         <option value={DELAY_FAST}>fast</option>
         <option value={DELAY_FASTEST}>fastest</option>
       </select>
+{/*       
+      </div>
+      <div> */}
       <button
         className="content-header__button"
         onClick={onVisualize}
@@ -184,6 +184,7 @@ const Header = () => {
       >
         Code Editor
       </button>
+      {/* </div> */}
     </div>
   );
 };

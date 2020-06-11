@@ -54,7 +54,7 @@ const ALGOS = [DIJKSTRA ,BELLMAN_FORD, BFS, DFS, A_STAR];
 const Provider = ({ children }: Node) => {
   const [isPathExist, setIsPathExist] = useState<boolean>(true);
   const [isVisualized, setIsVisualized] = useState<boolean>(false);
-  const [isHelped, setIsHelped] = useState<boolean>(false);
+  const [isHelped, setIsHelped] = useState<boolean>(true);
   // 代码编辑器是否打开
   const [isCoding, setIsCoding] = useState<boolean>(false);
   const algorithms = useRef<Array<string>>(ALGOS);
@@ -95,11 +95,11 @@ const Provider = ({ children }: Node) => {
     // 拿到 hook
     const setRow = setBoardSizeHook.current[0];
     const setCol = setBoardSizeHook.current[1];
+    // 更新 begin 和 end
     begin.current = {x : Math.round(br / 2), y: 2};
     end.current   = {x : Math.round(br / 2), y: bc-3};
     setRow(br);
     setCol(bc);
-    // 更新 begin 和 end
   }
 
   const updateItem = (

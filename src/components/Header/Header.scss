@@ -13,9 +13,25 @@
   font-size: 20px;
   color: white;
 
+  &__slider {
+    height: 100%;
+    width: 140px;
+    margin-right: 20px;
+    border-radius: none;
+    font-family: inherit;
+    font-size: inherit;
+    color: goldenrod;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+    margin-top: -40px; // ....
+  }
+
   &__select {
     height: 100%;
-    width: 200px;
+    width: 160px;
     margin-right: 20px;
     border-radius: none;
     font-family: inherit;
@@ -32,6 +48,7 @@
     background-position-x: 100%;
     background-position-y: 5px;
     padding-left: 10px;
+    // padding: 10px 0;
 
     &:disabled {
       @extend %disabled;
