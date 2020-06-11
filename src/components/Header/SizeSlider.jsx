@@ -3,17 +3,17 @@ import Slider from '@material-ui/core/Slider';
 import Typography from '@material-ui/core/Typography'
 
 const SizeSlider = (props) => {
-    console.log(props);
+    // console.log(props);
     const updateBoardSize = props.updateBoardSize;
     const board = props.board;
 
     const handleRowChange = (event, newValue) => {
-        console.log('row ', newValue);
+        // console.log('row ', newValue);
         updateBoardSize(newValue, board.current[0].length);
     };
 
     const handleColChange = (event, newValue) => {
-        console.log('col ', newValue);
+        // console.log('col ', newValue);
         console.log(board.current[0].length);
         updateBoardSize(board.current.length, newValue);
     };

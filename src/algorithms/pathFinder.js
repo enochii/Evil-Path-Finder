@@ -1,6 +1,6 @@
 // @flow
 
-import {   ITEM_SHORTEST, ITEM_CLICKED, ITEM_WALL } from 'constants.js';
+import { ITEM_VISITED, ITEM_SHORTEST, ITEM_CLICKED, ITEM_WALL } from 'constants.js';
 import Timer from './Timer';
 
 export type ConstructorType = {
@@ -72,6 +72,20 @@ export default class PathFinder {
     var state = this.board[nx][ny];
     return state != ITEM_CLICKED && state != ITEM_WALL;
   }
+
+  visitItem(nx, ny, delay=0) {
+	this.board[nx][ny] = ITEM_VISITED;
+	this.updateItem(nx, ny, ITEM_VISITED, delay);
+  }
+
+  dumpPath(currentX, currentY) {
+	while(currentX != -1) {
+		var pp = this.prev[currentX][currentY];
+		console.log(pp);
+		currentX = pp.x;
+		currentY = pp.y;
+	  }
+  }
   
   clearTimers() {
     this.timers.forEach((timer: Timer) => {
@@ -89,7 +103,8 @@ export default class PathFinder {
   }
 
   paintShortestPath = () => {
-    const { begin, end, prev, updateItem } = this;
+	const { begin, end, prev, updateItem } = this;
+	console.log(this.prev);
 
     const path: Array<{| x: number, y: number |}> = [];
     let { x } = end;
