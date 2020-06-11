@@ -20,6 +20,8 @@ export const WALL_COLOR = Styles.wallColor;
 //   'shortest',
 // ];
 
+export const BOARD_HEIGHT = 60;
+
 // algorithm
 export const DIJKSTRA = 'dijkstra';
 export const BELLMAN_FORD = 'bellman-ford';

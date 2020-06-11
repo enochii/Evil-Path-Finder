@@ -92,10 +92,14 @@ const Provider = ({ children }: Node) => {
 
   const updateBoardSize = (br, bc) => {
     board.current = createArray(br, bc);
+    // 拿到 hook
     const setRow = setBoardSizeHook.current[0];
     const setCol = setBoardSizeHook.current[1];
+    begin.current = {x : Math.round(br / 2), y: 2};
+    end.current   = {x : Math.round(br / 2), y: bc-3};
     setRow(br);
     setCol(bc);
+    // 更新 begin 和 end
   }
 
   const updateItem = (

@@ -16,12 +16,13 @@ import {
   SHORTEST_COLOR,
   ITEM_WALL,
   WALL_COLOR,
+  BOARD_HEIGHT,
 } from 'constants.js';
 import './Item.scss';
 
 const Item = ({ ridx, cidx }: { ridx: number, cidx: number }) => {
   const [type, setType] = useState(ITEM_INITIAL);
-  const { setItemCache, begin, end, pathFinder, setIsVisualized } = useContext(
+  const { setItemCache, begin, end, pathFinder, setIsVisualized, board } = useContext(
     Context,
   );
 
@@ -71,6 +72,11 @@ const Item = ({ ridx, cidx }: { ridx: number, cidx: number }) => {
     return INITIAL_COLOR;
   };
 
+  const getItemSize = () => {
+	return JSON.stringify(BOARD_HEIGHT / board.current.length) + "vh";
+  }
+//   console.log(getItemSize());
+
   return (
     // <CSSTransition in="true" timeout={200} classNames="example">
     <div
@@ -79,7 +85,9 @@ const Item = ({ ridx, cidx }: { ridx: number, cidx: number }) => {
       data-ridx={ridx}
       data-cidx={cidx}
       style={{
-        backgroundColor: getColor(),
+		backgroundColor: getColor(),
+		height: getItemSize(),
+		width: getItemSize(),
         // boxShadow: 
       }}
     />
