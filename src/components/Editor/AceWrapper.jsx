@@ -26,7 +26,7 @@ const AceWrapper = () => {
     var succ = addAlgo('Test', codeText);
     if(succ) {
       // console.log(succ);
-      algorithms.current = algorithms.current.concat(succ);
+      if(!algorithms.current.includes(succ)) algorithms.current = algorithms.current.concat(succ);
       // console.log(algorithms);
       setIsCoding(false);
     }

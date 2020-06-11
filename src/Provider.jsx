@@ -15,6 +15,7 @@ import {
   BFS,
   DFS,
   A_STAR,
+  DIJKSTRA,
 } from './constants';
 
 type PositionType = {| x: number, y: number |};
@@ -48,7 +49,7 @@ export type ContextType = {|
 |};
 
 const Context = createContext<ContextType>();
-const ALGOS = [BELLMAN_FORD, BFS, DFS, A_STAR, 'TEST'];
+const ALGOS = [DIJKSTRA ,BELLMAN_FORD, BFS, DFS, A_STAR];
 
 const Provider = ({ children }: Node) => {
   const [isPathExist, setIsPathExist] = useState<boolean>(true);
