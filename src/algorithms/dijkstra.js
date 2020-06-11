@@ -14,6 +14,7 @@ export default class Dijkstra extends PathFinder {
     const { pq, dist, prev, board, begin, end, updateItem } = this;
 
     pq.queue({ x: begin.x, y: begin.y, d: 0 });
+    dist[begin.x][begin.y] = 0;
     let find = false;
 
     while (pq.length) {

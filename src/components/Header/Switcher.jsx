@@ -6,6 +6,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
+import PathFinder from 'algorithms/pathFinder'
 
 //   const Switcher = (props) => {
 //     return (
@@ -80,6 +81,7 @@ export default function Switcher() {
 		var checked = event.target.checked;
 		setState({ ...state, [event.target.name]: checked });
 		console.log(checked);
+		PathFinder.enableDiagonal(checked);
 	};
   
 	return (

@@ -4,15 +4,21 @@ import Typography from '@material-ui/core/Typography'
 
 const SizeSlider = (props) => {
     console.log(props);
-    const handleChange = (event, newValue) => {
-        console.log(newValue);
+    const updateBoardSize = props.updateBoardSize;
+    const board = props.board;
+
+    const handleRowChange = (event, newValue) => {
+        console.log('row ', newValue);
+        updateBoardSize(newValue, board.current[0].length);
     };
+
+    const handleColChange = (event, newValue) => {
+        console.log('col ', newValue);
+        console.log(board.current[0].length);
+        updateBoardSize(board.current.length, newValue);
+    };
+
     return (
-        // <button variant="contained" color="primary" 
-        //     className="content-header__button"
-        //     tyee="button">
-        //     你好，世界
-        // </button>
         <div className="content-header__slider"
             // disabled={isVisualized}
             id = "size-slider">
@@ -20,20 +26,20 @@ const SizeSlider = (props) => {
                 Row / Col Size
             </Typography>
             <SingleSilder
-                id = 'col-slider'
-                defVal = {14}
+                id = 'row-slider'
+                defVal = {16}
                 step = {1}
-                min = {8}
+                min = {10}
                 max = {16}
-                handleChange = {handleChange}
+                handleChange = {handleRowChange}
                 />
             <SingleSilder
                 id = 'col-slider'
-                defVal = {14}
+                defVal = {30}
                 step = {1}
                 min = {18}
                 max = {30}
-                handleChange = {handleChange}
+                handleChange = {handleColChange}
                 />
             {/* <Typography id="discrete-slider-restrict" gutterBottom>
                 Col Size

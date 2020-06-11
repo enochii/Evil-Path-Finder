@@ -44,6 +44,7 @@ const Header = () => {
     setIsVisualized,
     setIsHelped,
     setIsCoding,
+    updateBoardSize,
   } = context;
   
   const onAlgoChange = (e: ElementEvent<HTMLSelectElement>) => {
@@ -118,7 +119,11 @@ const Header = () => {
         </option>
       </select> */}
       {/* <div> */}
-      <SizeSlider test={"sch"}/>
+      <SizeSlider 
+      test = {"sch"} 
+      updateBoardSize = {updateBoardSize}
+      board = {board}
+      />
       <MapSelector />
       <AlgoSelector  onAlgoChange={onAlgoChange}/>
       <select

@@ -28,6 +28,8 @@ export default class PathFinder {
   static dx: Array<number>;
 
   static dy: Array<number>;
+  static DX: Array< Array<number> >;
+  static DY: Array< Array<number> >;
 
   constructor({ begin, end, updateItem, board }: ConstructorType) {
     this.begin = begin;
@@ -38,9 +40,19 @@ export default class PathFinder {
     this._init();
   }
 
+  static DX = [[-1, 1, 0, 0], [-1, 1, 0, 0, -1, -1, 1, 1]];
+  static DY = [[0, 0, -1, 1], [0, 0, -1, 1, -1, 1, 1, -1]];
+
   static dx = [-1, 1, 0, 0];
 
   static dy = [0, 0, -1, 1];
+
+  // 是否允许对角线
+	static enableDiagonal(checked){
+		var index = checked? 1:0;
+		PathFinder.dx = PathFinder.DX[index];
+		PathFinder.dy = PathFinder.DY[index];
+  	}
 
   _init = () => {
     this.dist = new Array(this.board.length);
