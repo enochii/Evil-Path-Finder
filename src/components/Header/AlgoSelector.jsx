@@ -10,7 +10,7 @@ const AlgoSelector = (props) => {
     const context = useContext(Context);
     const {isVisualized, algorithms} = context;
     
-    console.log(props);
+    // console.log(props);
     const onAlgoChange = props.onAlgoChange;
     const listItems = algorithms.current.map((algo_name) =><option key={algo_name}> {algo_name}</option>);
 

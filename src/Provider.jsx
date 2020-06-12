@@ -17,6 +17,7 @@ import {
   A_STAR,
   DIJKSTRA,
 } from './constants';
+import { ALGO_LIST, localItemExist, runCodeWrapper } from 'components/Editor/evil';
 
 type PositionType = {| x: number, y: number |};
 type SetItemCacheType = { [key: string]: (string) => void };
@@ -46,6 +47,7 @@ export type ContextType = {|
   setIsVisualized: boolean => void,
   setIsHelped: boolean => void,
   setIsCoding: boolean => void,
+  addAlgoToHeader: string => void,
 |};
 
 const Context = createContext<ContextType>();
@@ -90,6 +92,9 @@ const Provider = ({ children }: Node) => {
     return arr;
   }
 
+  const addAlgoToHeader = (name) => {
+    if(!algorithms.current.includes(name)) algorithms.current = algorithms.current.concat(name);
+  }
   const updateBoardSize = (br, bc) => {
     board.current = createArray(br, bc);
     // 拿到 hook
@@ -145,6 +150,40 @@ const Provider = ({ children }: Node) => {
     });
   };
 
+  // todo ： 添加新算法后会把新算法加入header两次？
+  // 一次是主动，一次是关闭 modal 会刷新页面
+  // 不过这里做了一个 return 问题不大
+  const restoreAlgos = () => {
+    var algoNames = localStorage.getItem(ALGO_LIST);
+    if(algoNames === null) return ;
+    algoNames = JSON.parse(algoNames);
+    // restore
+    algoNames.forEach(algo => {
+		// todo : 如果覆盖自带的算法可能会有点问题
+		if(algorithms.current.includes(algo)) {
+			console.log('already load algo', algo);
+			return;
+		}
+        console.log(algo);
+        if(!localItemExist(algo)) {
+            console.log('error when loading ', algo);
+            // continue;
+        } else {
+            // 绑定运行时环境
+            var code = localStorage.getItem(algo);
+            var succ = runCodeWrapper(code);
+            if(succ) {
+				console.log('resume ', succ);
+				addAlgoToHeader(succ);
+            } else {
+				console.log('load ', algo, ' error');
+			}
+        }
+    });
+}
+
+	restoreAlgos();
+
   return (
     <Context.Provider
       value={{
@@ -163,6 +202,7 @@ const Provider = ({ children }: Node) => {
         setIsHelped,
         setIsCoding,
         updateBoardSize,
+        addAlgoToHeader,
         // setStartc,
         // setStartr,
         // setEndc,

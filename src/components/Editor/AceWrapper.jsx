@@ -4,14 +4,14 @@ import AceEditor from "react-ace";
 import "ace-builds/src-noconflict/mode-javascript";
 import "ace-builds/src-noconflict/theme-tomorrow";
 import "ace-builds/src-noconflict/ext-language_tools";
-import {addAlgo, getInitCode, saveInitCode} from "./evil";
+import {addAlgo, getInitCode, saveInitCode, addLocalAlgoList} from "./evil";
 import { useContext } from "react";
 import { Context } from "Provider";
 
 
 const AceWrapper = () => {
   const context = useContext(Context);
-  const {setIsCoding, algorithms} = context;
+  const {setIsCoding, algorithms, addAlgoToHeader} = context;
 
   function resetCode() {
     saveInitCode(init_code);
@@ -23,12 +23,17 @@ const AceWrapper = () => {
   async function onSubmit() {
     const { codeText } = state;
     console.log(codeText);
-    var succ = addAlgo('Test', codeText);
+    var succ = addAlgo(undefined, codeText);
     if(succ) {
       // console.log(succ);
-      if(!algorithms.current.includes(succ)) algorithms.current = algorithms.current.concat(succ);
+      // if(!algorithms.current.includes(succ)) algorithms.current = algorithms.current.concat(succ);
+      addAlgoToHeader(succ);
+      addLocalAlgoList(succ, codeText); // 后续可以恢复
       // console.log(algorithms);
+      alert('代码成功上传啦');
       setIsCoding(false);
+    } else {
+      // alert(error);
     }
   }
 

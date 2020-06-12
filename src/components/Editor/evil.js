@@ -7,22 +7,7 @@ import pathfinderMap from 'algorithms/index'
 
 
 export const ALGO_LIST = 'EPF_ALGO_LIST';
-export function restoreAlgos() {
-    var algoNames = localStorage.getItem(ALGO_LIST);
-    if(algoNames === null) return ;
-    algoNames = JSON.parse(algoNames);
-    // restore
-    algoNames.forEach(algo => {
-        console.log(algo);
-        if(!localItemExist(algo)) {
-            console.log('error when loading ', algo);
-            // continue;
-        } else {
-            // 绑定运行时环境
-            // runCodeWrapper(code);
-        }
-    });
-}
+
 export function localItemExist(key) {
     return !(localStorage.getItem(key) === null);
 }
@@ -36,17 +21,18 @@ function runCodeWithEnv(obj){
     );
 }
 
-function runCodeWrapper(code) {
+export function runCodeWrapper(code) {
+    console.log(code);
     var wrapped_code = 'function(PathFinder,BOARD_ROW,BOARD_COL,ITEM_CLICKED,ITEM_VISITED){'
     + 'return ' + code +';}';
     try{
         var cls = runCodeWithEnv(wrapped_code);
         // name -> cls
         pathfinderMap[cls.name] = cls;
-        
-        // todo : 这里删除掉
-        // pathfinderMap[name] = cls;
-        console.log(cls); alert('代码成功上传啦');
+        // 这里的名字是正确的，代码也是预处理过的...
+        storeLocal(cls.name, code);
+
+        console.log(cls); 
         return cls.name;
     } catch (error) {
         console.log(error);
@@ -63,10 +49,27 @@ export function addAlgo(name, code) {
     code = preprocessCode(code);
     console.log(code);
     // 加入 local storage
-    storeLocal(name, code);
+    // storeLocal(name, code);
     // map
     // setState 让 header 更新
     return runCodeWrapper(code);
+}
+
+export function addLocalAlgoList(name, code) {
+    // storeLocal(name, code);
+    // 加入列表，便于后续的恢复
+    if(!localItemExist(ALGO_LIST)) {
+        // 初始化一个数组
+        var algoList = [];
+    } else {
+        var algoList = localStorage.getItem(ALGO_LIST);
+        console.log(algoList);
+        algoList = JSON.parse(algoList);
+    }
+    console.log(algoList);
+    // todo?
+    algoList = algoList.concat(name);
+    localStorage.setItem(ALGO_LIST, JSON.stringify(algoList));
 }
 
 function storeLocal(name, code) {

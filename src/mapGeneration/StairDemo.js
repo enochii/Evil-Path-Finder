@@ -1,5 +1,5 @@
 import { ITEM_WALL } from "../constants";
-import MgBase from "./MgBase";
+import MgBase from "./mgBase";
 
 export default class MgRandom extends MgBase {
     constructor(args) {
