@@ -18,6 +18,7 @@ import {
   DIJKSTRA,
 } from './constants';
 import { ALGO_LIST, localItemExist, runCodeWrapper } from 'components/Editor/evil';
+import { getLocalAlgoList } from 'helper';
 
 type PositionType = {| x: number, y: number |};
 type SetItemCacheType = { [key: string]: (string) => void };
@@ -154,9 +155,7 @@ const Provider = ({ children }: Node) => {
   // 一次是主动，一次是关闭 modal 会刷新页面
   // 不过这里做了一个 return 问题不大
   const restoreAlgos = () => {
-    var algoNames = localStorage.getItem(ALGO_LIST);
-    if(algoNames === null) return ;
-    algoNames = JSON.parse(algoNames);
+    var algoNames = getLocalAlgoList();
     // restore
     algoNames.forEach(algo => {
 		// todo : 如果覆盖自带的算法可能会有点问题

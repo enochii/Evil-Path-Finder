@@ -4,9 +4,10 @@ import AceEditor from "react-ace";
 import "ace-builds/src-noconflict/mode-javascript";
 import "ace-builds/src-noconflict/theme-tomorrow";
 import "ace-builds/src-noconflict/ext-language_tools";
-import {addAlgo, getInitCode, saveInitCode, addLocalAlgoList} from "./evil";
+import {addAlgo, getInitCode, saveInitCode, addLocalAlgoList, localItemExist, ALGO_LIST} from "./evil";
 import { useContext } from "react";
 import { Context } from "Provider";
+import { getLocalAlgoList } from "helper";
 
 
 const AceWrapper = () => {
@@ -18,6 +19,10 @@ const AceWrapper = () => {
     setState({
       codeText: init_code,
     });
+  }
+
+  function dropAll() {
+    localStorage.setItem(ALGO_LIST, "[]");
   }
 
   async function onSubmit() {
@@ -74,6 +79,8 @@ const AceWrapper = () => {
           {/* 重置代码 */}
       <button onClick={()=>{resetCode()}}>
           Reset</button>
+      <button onClick={()=>{dropAll()}}>
+          Drop All</button>
     </div>
   );
 }
