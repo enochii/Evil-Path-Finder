@@ -6,6 +6,27 @@ import PathFinder from 'algorithms/pathFinder'
 import pathfinderMap from 'algorithms/index'
 
 
+export const ALGO_LIST = 'EPF_ALGO_LIST';
+export function restoreAlgos() {
+    var algoNames = localStorage.getItem(ALGO_LIST);
+    if(algoNames === null) return ;
+    algoNames = JSON.parse(algoNames);
+    // restore
+    algoNames.forEach(algo => {
+        console.log(algo);
+        if(!localItemExist(algo)) {
+            console.log('error when loading ', algo);
+            // continue;
+        } else {
+            // 绑定运行时环境
+            // runCodeWrapper(code);
+        }
+    });
+}
+export function localItemExist(key) {
+    return !(localStorage.getItem(key) === null);
+}
+
 // 单纯的 eval 只能引用局部变量
 // function 可以利用绑定
 // todo : -> board.length
@@ -15,25 +36,16 @@ function runCodeWithEnv(obj){
     );
 }
 
-export function addAlgo(name, code) {
-
-    saveInitCode(code); // 保存用户编辑过的代码
-    // 加入 local storage
-    storeLocal(name, code);
-    // 对代码做预处理
-    code = preprocessCode(code);
-    console.log(code);
-    // map
-    // setState 让 header 更新
+function runCodeWrapper(code) {
     var wrapped_code = 'function(PathFinder,BOARD_ROW,BOARD_COL,ITEM_CLICKED,ITEM_VISITED){'
-        + 'return ' + code +';}';
+    + 'return ' + code +';}';
     try{
         var cls = runCodeWithEnv(wrapped_code);
         // name -> cls
         pathfinderMap[cls.name] = cls;
         
         // todo : 这里删除掉
-        pathfinderMap[name] = cls;
+        // pathfinderMap[name] = cls;
         console.log(cls); alert('代码成功上传啦');
         return cls.name;
     } catch (error) {
@@ -41,7 +53,20 @@ export function addAlgo(name, code) {
         alert(error);
         return false;
     }
+}
+
+export function addAlgo(name, code) {
+
+    saveInitCode(code); // 保存用户编辑过的代码
     
+    // 对代码做预处理
+    code = preprocessCode(code);
+    console.log(code);
+    // 加入 local storage
+    storeLocal(name, code);
+    // map
+    // setState 让 header 更新
+    return runCodeWrapper(code);
 }
 
 function storeLocal(name, code) {

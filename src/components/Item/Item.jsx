@@ -19,6 +19,9 @@ import {
   BOARD_HEIGHT,
 } from 'constants.js';
 import './Item.scss';
+import { pointEqual } from 'helper';
+
+
 
 const Item = ({ ridx, cidx }: { ridx: number, cidx: number }) => {
   const [type, setType] = useState(ITEM_INITIAL);
@@ -72,8 +75,22 @@ const Item = ({ ridx, cidx }: { ridx: number, cidx: number }) => {
     return INITIAL_COLOR;
   };
 
+
+  const animationMap = {
+    [ITEM_INITIAL]: 'none',
+    [ITEM_VISITED]: 'visitedAnimation',
+    [ITEM_CLICKED]: 'wallAnimation',
+    [ITEM_SHORTEST]: 'shortestAnimation'
+  }
+  const getFrame = () => {
+    if(pointEqual(ridx, cidx, begin.current) || pointEqual(ridx, cidx, end.current)) {
+      return 'none';
+    }
+    return animationMap[type];
+  }
+
   const getItemSize = () => {
-	return JSON.stringify(BOARD_HEIGHT / board.current.length) + "vh";
+	  return JSON.stringify(BOARD_HEIGHT / board.current.length) + "vh";
   }
 //   console.log(getItemSize());
 
@@ -87,7 +104,8 @@ const Item = ({ ridx, cidx }: { ridx: number, cidx: number }) => {
       style={{
 		backgroundColor: getColor(),
 		height: getItemSize(),
-		width: getItemSize(),
+    width: getItemSize(),
+    animationName: getFrame(),
         // boxShadow: 
       }}
     />

@@ -8,7 +8,7 @@ const PH = 'place holder';
 const mapAlgos = [PH, RANDOM];
 const MapSelector = () => {
     const context = useContext(Context);
-    const {isVisualized, updateItem, clear, startr, startc, endr, endc, updateBoardSize} = context;
+    const {isVisualized, updateItem, clear, board, start, end, updateBoardSize} = context;
     
     const MapGenerationMap = {
         [RANDOM]: MgRandom,
@@ -23,8 +23,8 @@ const MapSelector = () => {
         // 调用函数
         var algoName = e.target.value;
         // console.log(algoName);
-        console.log(startr, startc, endr, endc);
-        var mgalgo = new MapGenerationMap[algoName]({startr, startc, endr, endc, updateItem, updateBoardSize});
+        // console.log(startr, startc, endr, endc);
+        var mgalgo = new MapGenerationMap[algoName]({ start, end, board, updateItem, updateBoardSize});
         mgalgo.excute(updateItem);
     }
     

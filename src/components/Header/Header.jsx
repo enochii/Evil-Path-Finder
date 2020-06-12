@@ -60,8 +60,8 @@ const Header = () => {
     clearPath();
     setIsVisualized(true);
 
-    console.log(type);
-    console.log(pathfinderMap[type]);
+    // console.log(type);
+    // console.log(pathfinderMap[type]);
     pathFinder.current = new pathfinderMap[type]({
       begin: begin.current,
       end: end.current,

@@ -89,7 +89,7 @@ const Board = () => {
     } else {
       if (!clicking) return;
       // 取消注释会导致 drag 方式第一个 item 不会着 clicked
-      // if (clickPos.current.x === ridx && clickPos.current.y === cidx) return;
+      if (clickPos.current.x === ridx && clickPos.current.y === cidx) return;
       changeColor(e, true);
     }
   };
