@@ -4,7 +4,7 @@ import Recursion from "./RecursiveDivision";
 export default class HorizontalRecursion extends Recursion {
     constructor(args) {
         super(args);
+        // 方向
+        this.orientation_ = Recursion.HOR;
     }
-    // 方向
-    orientation_ = this.HOR;
 }

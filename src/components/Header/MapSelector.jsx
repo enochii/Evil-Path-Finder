@@ -33,13 +33,14 @@ const MapSelector = () => {
         var algoName = e.target.value;
         // console.log(algoName);
         // console.log(startr, startc, endr, endc);
-        var mgalgo = new MapGenerationMap[algoName]({ 
+        var mgalgo = new MapGenerationMap[algoName]({
             begin: begin.current,
             end: end.current,
             updateItem,
             board: board.current, 
-            updateBoardSize: updateBoardSize});
-            pathFinder.current = mgalgo;
+            updateBoardSize: updateBoardSize}
+        );
+        pathFinder.current = mgalgo;
         mgalgo.excute(updateItem);
     }
     

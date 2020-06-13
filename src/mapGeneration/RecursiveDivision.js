@@ -7,21 +7,21 @@ export default class Recursion extends MgBase {
 
     constructor(args) {
         super(args);
-        // 方向
-        // orientation_ = this.HOR;
         // 稀疏因子，让生成的格子不要太密集
         this.cnt = 0;
         this.sparseFactor_ = 1.8;
+        // 方向，子类会覆盖
+        // this.orientation_ = Recursion.HOR;
     }
 
     excute = () => {
         const {board} = this;
-		console.log(board);
+		console.log(this.orientation_, Recursion.VER);
         this.recursiveDivisionMaze_(board, 0, board.length, 0, board[0].length,this.orientation_,false, "wall");
     }
 
     recursiveDivisionMaze_(board, rowStart, rowEnd, colStart, colEnd, orientation, surroundingWalls, type) {
-        console.log('?');
+        // console.log('?');
         if (rowEnd < rowStart || colEnd < colStart) {
           return;
         }
@@ -40,7 +40,7 @@ export default class Recursion extends MgBase {
             }
           surroundingWalls = true;
         }
-        if (orientation === "horizontal") {
+        if (orientation === Recursion.HOR) {
           let possibleRows = [];
           for (let number = rowStart; number <= rowEnd; number += 2) {
             possibleRows.push(number);
@@ -74,14 +74,14 @@ export default class Recursion extends MgBase {
           if (currentRow - 2 - rowStart > colEnd - colStart) {
             this.recursiveDivisionMaze_(board, rowStart, currentRow - 2, colStart, colEnd, orientation, surroundingWalls, type);
           } else {
-            this.recursiveDivisionMaze_(board, rowStart, currentRow - 2, colStart, colEnd, "vertical", surroundingWalls, type);
+            this.recursiveDivisionMaze_(board, rowStart, currentRow - 2, colStart, colEnd, Recursion.VER, surroundingWalls, type);
           }
           if (rowEnd - (currentRow + 2) > colEnd - colStart) {
             this.recursiveDivisionMaze_(board, currentRow + 2, rowEnd, colStart, colEnd, orientation, surroundingWalls, type);
           } else {
-            this.recursiveDivisionMaze_(board, currentRow + 2, rowEnd, colStart, colEnd, "vertical", surroundingWalls, type);
+            this.recursiveDivisionMaze_(board, currentRow + 2, rowEnd, colStart, colEnd, Recursion.VER, surroundingWalls, type);
           }
-        } else {
+        } else if(orientation === Recursion.VER){
           let possibleCols = [];
           for (let number = colStart; number <= colEnd; number += 2) {
             possibleCols.push(number);
@@ -111,13 +111,13 @@ export default class Recursion extends MgBase {
 
           if (rowEnd - rowStart > currentCol - 2 - colStart) {
             var wall = (rowEnd-rowStart> board.length/this.sparseFactor_)? 'wall':'';
-            this.recursiveDivisionMaze_(board, rowStart, rowEnd, colStart, currentCol - 2, "horizontal", surroundingWalls, wall);
+            this.recursiveDivisionMaze_(board, rowStart, rowEnd, colStart, currentCol - 2, Recursion.HOR, surroundingWalls, wall);
           } else {
             this.recursiveDivisionMaze_(board, rowStart, rowEnd, colStart, currentCol - 2, orientation, surroundingWalls, type);
           }
           if (rowEnd - rowStart > colEnd - (currentCol + 2)) {
               var wall = (rowEnd-rowStart> board.length/this.sparseFactor_)? 'wall':'';
-            this.recursiveDivisionMaze_(board, rowStart, rowEnd, currentCol + 2, colEnd, "horizontal", surroundingWalls, wall);
+            this.recursiveDivisionMaze_(board, rowStart, rowEnd, currentCol + 2, colEnd, Recursion.HOR, surroundingWalls, wall);
           } else {
             this.recursiveDivisionMaze_(board, rowStart, rowEnd, currentCol + 2, colEnd, orientation, surroundingWalls, type);
           }
