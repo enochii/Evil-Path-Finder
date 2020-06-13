@@ -47,10 +47,10 @@ export const ITEM_SHORTEST = 'ITEM_SHORTEST';
 export const ITEM_WALL = 'ITEM_WALL';
 
 // Delay
-export const DELAY_SLOWEST = 550;
-export const DELAY_SLOW = 450;
-export const DELAY_NORMAL = 300;
-export const DELAY_FAST = 150;
+export const DELAY_SLOWEST = 400;
+export const DELAY_SLOW = 300;
+export const DELAY_NORMAL = 200;
+export const DELAY_FAST = 80;
 export const DELAY_FASTEST = 50;
 
 // Board

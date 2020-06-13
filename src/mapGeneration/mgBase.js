@@ -21,9 +21,9 @@ export default class MgBase {
     updateItem_ = (r,c,type,factor=0.1) => {
         this.updateItem(r,c,type,++this.cnt*factor);
     }
-    setItemClicked(nx, ny, delay=0) {
-        this.updateItem(nx, ny, ITEM_CLICKED, delay);
-    }
+    // setItemClicked(nx, ny, delay=0) {
+    //     this.updateItem(nx, ny, ITEM_CLICKED, delay);
+    // }
 
     // 起始和终点不能放置障碍物
     canSetWall(x, y) {

@@ -43,6 +43,7 @@ export default class BellmanFord extends PathFinder {
   };
 
   execute = (): boolean => {
+    console.log('bellford');
     const { _relax, updateItem, end } = this;
 
     let timeFactor = 1;
