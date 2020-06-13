@@ -15,9 +15,11 @@ const MapSelector = () => {
     const context = useContext(Context);
     const {isVisualized, updateItem, clear, board, begin, end, updateBoardSize, pathFinder} = context;
     
-    const mapAlgos = [ RANDOM, STAIR, HOR_RER, VER_RER];
+    const mapAlgos = [ 
+        // RANDOM, 
+        STAIR, HOR_RER, VER_RER];
     const MapGenerationMap = {
-        [RANDOM]: MgRandom,
+        // [RANDOM]: MgRandom,
         [STAIR]: Stair,
         [HOR_RER]: HorizontalRecursion,
         [VER_RER]: VerticalRecursion,
