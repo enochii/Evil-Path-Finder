@@ -48,17 +48,18 @@
 @keyframes wallAnimation {
   0% {
     transform: scale(.3);
-    background-color: rgba(17, 104, 217, 0.75);
+    background-color: rgba(238, 104, 217, 0.75);
   }
 
   50% {
     transform: scale(1.2);
-    // background-color: rgba(17, 104, 217, 0.75);
+    background-color: rgba(238, 127, 36, 1);
   }
 
   100% {
     transform: scale(1.0);
-    background-color: rgba(17, 104, 217, 0.75);
+    // background-color: rgba(17, 104, 217, 0.75);
+    background-color: rgba(255, 127, 36, 1);
   }
 }
 

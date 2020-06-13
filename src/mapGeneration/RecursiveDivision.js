@@ -10,6 +10,7 @@ export default class Recursion extends MgBase {
         // 方向
         // orientation_ = this.HOR;
         // 稀疏因子，让生成的格子不要太密集
+        this.cnt = 0;
         this.sparseFactor_ = 1.8;
     }
 
@@ -30,9 +31,9 @@ export default class Recursion extends MgBase {
                     if(!this.canSetWall(r, c)) continue;
                     if (r === 0 || c === 0 || r === board.length - 1 || c === board[0].length - 1) {
                         if (type === "wall") {
-                            this.updateItem(r, c, ITEM_CLICKED);
+                            this.updateItem_(r, c, ITEM_CLICKED);
                         } else if (type === "weight") {
-                            // this.updateItem(r,c)
+                            // this.updateItem_(r,c)
                         }
                       }
                 }
@@ -60,7 +61,7 @@ export default class Recursion extends MgBase {
                     if (this.canSetWall(r, c)) {
                         // board.wallsToAnimate.push(currentHTMLNode);
                         if (type === "wall") {
-                          this.updateItem(r,c, ITEM_CLICKED);
+                          this.updateItem_(r,c, ITEM_CLICKED);
                         } else {
                         //   board.nodes[node].status = "unvisited";
                         //   board.nodes[node].weight = 15;
@@ -99,7 +100,7 @@ export default class Recursion extends MgBase {
                 if (c === currentCol && r%3!=rowRandom && r >= rowStart - 1 && r <= rowEnd + 1) {
                     if (this.canSetWall(r,c)) {
                         if (type === "wall") {
-                            this.updateItem(r, c, ITEM_CLICKED);
+                            this.updateItem_(r, c, ITEM_CLICKED);
                         } else {
                         
                         }        

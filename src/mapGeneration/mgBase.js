@@ -18,6 +18,9 @@ export default class MgBase {
         this.updateBoardSize = updateBoardSize;
         this.timers = [];
     }
+    updateItem_ = (r,c,type,factor=0.1) => {
+        this.updateItem(r,c,type,++this.cnt*factor);
+    }
     setItemClicked(nx, ny, delay=0) {
         this.updateItem(nx, ny, ITEM_CLICKED, delay);
     }

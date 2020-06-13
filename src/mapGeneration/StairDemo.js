@@ -23,7 +23,7 @@ export default class Stair extends MgBase {
           if (this.canSetWall(currentIdX, currentIdY)) {
             // currentNode.status = "wall";
 			// board.wallsToAnimate.push(currentHTMLNode);
-			this.updateItem(currentIdX, currentIdY, ITEM_CLICKED, 1);
+			this.updateItem_(currentIdX, currentIdY, ITEM_CLICKED, 0.2);
           }
           currentIdX--;
           currentIdY++;
@@ -36,7 +36,7 @@ export default class Stair extends MgBase {
           if (this.canSetWall(currentIdX, currentIdY)) {
             // currentNode.status = "wall";
 			// board.wallsToAnimate.push(currentHTMLNode);
-			this.updateItem(currentIdX, currentIdY, ITEM_CLICKED, 1);
+			this.updateItem_(currentIdX, currentIdY, ITEM_CLICKED, 0.2);
           }
           currentIdX++;
           currentIdY++;
@@ -48,7 +48,7 @@ export default class Stair extends MgBase {
           if (this.canSetWall(currentIdX, currentIdY)) {
             // currentNode.status = "wall";
 			// board.wallsToAnimate.push(currentHTMLNode);
-			this.updateItem(currentIdX, currentIdY, ITEM_CLICKED, 1);
+			this.updateItem_(currentIdX, currentIdY, ITEM_CLICKED, 0.2);
           }
           currentIdX--;
           currentIdY++;
