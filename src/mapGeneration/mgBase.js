@@ -1,16 +1,22 @@
 import { ITEM_CLICKED } from "../constants";
 import { pointEqual } from "helper";
+import PathFinder from "algorithms/pathFinder";
 
 
 export default class MgBase {
     // 这声明语法？
-    constructor({start, end, board, updateItem, updateBoardSize}) {
+    constructor({begin, end, board, updateItem, updateBoardSize}) {
         // this.startr = startr;
         // this.startc = startc;
         // this.endr = endr;
         // this.endc = endc;
+        // super(begin, end, updateItem, board);
+        this.begin = begin;
+        this.end = end;
+        this.board = board;
         this.updateItem = updateItem;
         this.updateBoardSize = updateBoardSize;
+        this.timers = [];
     }
     setItemClicked(nx, ny, delay=0) {
         this.updateItem(nx, ny, ITEM_CLICKED, delay);
@@ -18,7 +24,8 @@ export default class MgBase {
 
     // 起始和终点不能放置障碍物
     canSetWall(x, y) {
-        const {start, end } = this;
-        return !pointEqual(x,y,start) || !pointEqual(x,y,end);
+        const {begin, end } = this;
+        // console.log(begin);
+        return !pointEqual(x,y,begin) || !pointEqual(x,y,end);
     }
 }

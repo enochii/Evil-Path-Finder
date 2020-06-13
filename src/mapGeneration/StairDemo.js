@@ -1,48 +1,54 @@
-import { ITEM_WALL } from "../constants";
+import { ITEM_WALL, ITEM_CLICKED } from "../constants";
 import MgBase from "./mgBase";
 
-export default class MgRandom extends MgBase {
+export default class Stair extends MgBase {
     constructor(args) {
         super(args);
     }
 
     excute = () => {
         const {board} = this;
-
+		console.log(board);
+        this.stairDemo_(board);
     }
     stairDemo_(board) {
+		console.log(board);
         let currentIdX = board.length - 1;
         let currentIdY = 0;
         // let relevantStatuses = ["start", "target", "object"];
-        while (currentIdX > 0 && currentIdY < board.width) {
-          let currentId = `${currentIdX}-${currentIdY}`;
-          let currentNode = board.nodes[currentId];
-          let currentHTMLNode = document.getElementById(currentId);
+        while (currentIdX > 0 && currentIdY < board[0].length) {
+        //   let currentId = `${currentIdX}-${currentIdY}`;
+        //   let currentNode = board.nodes[currentId];
+        //   let currentHTMLNode = document.getElementById(currentId);
           if (this.canSetWall(currentIdX, currentIdY)) {
-            currentNode.status = "wall";
-            board.wallsToAnimate.push(currentHTMLNode);
+            // currentNode.status = "wall";
+			// board.wallsToAnimate.push(currentHTMLNode);
+			this.updateItem(currentIdX, currentIdY, ITEM_CLICKED, 1);
           }
           currentIdX--;
           currentIdY++;
-        }
-        while (currentIdX < board.height - 2 && currentIdY < board.width) {
-          let currentId = `${currentIdX}-${currentIdY}`;
-          let currentNode = board.nodes[currentId];
-          let currentHTMLNode = document.getElementById(currentId);
-          if (!relevantStatuses.includes(currentNode.status)) {
-            currentNode.status = "wall";
-            board.wallsToAnimate.push(currentHTMLNode);
+		}
+		currentIdX++;
+        while (currentIdX < board.length - 2 && currentIdY < board[0].length) {
+        //   let currentId = `${currentIdX}-${currentIdY}`;
+        //   let currentNode = board.nodes[currentId];
+        //   let currentHTMLNode = document.getElementById(currentId);
+          if (this.canSetWall(currentIdX, currentIdY)) {
+            // currentNode.status = "wall";
+			// board.wallsToAnimate.push(currentHTMLNode);
+			this.updateItem(currentIdX, currentIdY, ITEM_CLICKED, 1);
           }
           currentIdX++;
           currentIdY++;
         }
-        while (currentIdX > 0 && currentIdY < board.width - 1) {
-          let currentId = `${currentIdX}-${currentIdY}`;
-          let currentNode = board.nodes[currentId];
-          let currentHTMLNode = document.getElementById(currentId);
-          if (!relevantStatuses.includes(currentNode.status)) {
-            currentNode.status = "wall";
-            board.wallsToAnimate.push(currentHTMLNode);
+        while (currentIdX > 0 && currentIdY < board[0].length - 1) {
+        //   let currentId = `${currentIdX}-${currentIdY}`;
+        //   let currentNode = board.nodes[currentId];
+        //   let currentHTMLNode = document.getElementById(currentId);
+          if (this.canSetWall(currentIdX, currentIdY)) {
+            // currentNode.status = "wall";
+			// board.wallsToAnimate.push(currentHTMLNode);
+			this.updateItem(currentIdX, currentIdY, ITEM_CLICKED, 1);
           }
           currentIdX--;
           currentIdY++;

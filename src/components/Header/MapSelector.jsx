@@ -1,17 +1,26 @@
 import React, {useState, useContext} from "react";
 import { Context} from '../../Provider.jsx';
-import MgRandom from "mapGeneration/MgRandom.js";
-
+import MgRandom from "mapGeneration/MgRandom";
+import Stair from "mapGeneration/StairDemo";
+import Recursion from "mapGeneration/RecursiveDivision";
+import HorizontalRecursion from "mapGeneration/HorizontalRecursion.js";
+import VerticalRecursion from "mapGeneration/VerticalRecursion.js";
 
 const RANDOM = 'random';
-const PH = 'place holder';
-const mapAlgos = [PH, RANDOM];
+const STAIR = 'stair';
+const HOR_RER = 'horizontal';
+const VER_RER = 'vertical';
+
 const MapSelector = () => {
     const context = useContext(Context);
-    const {isVisualized, updateItem, clear, board, start, end, updateBoardSize} = context;
+    const {isVisualized, updateItem, clear, board, begin, end, updateBoardSize, pathFinder} = context;
     
+    const mapAlgos = [ RANDOM, STAIR, HOR_RER, VER_RER];
     const MapGenerationMap = {
         [RANDOM]: MgRandom,
+        [STAIR]: Stair,
+        [HOR_RER]: HorizontalRecursion,
+        [VER_RER]: VerticalRecursion,
     };
 
     // 地图生成算法
@@ -24,7 +33,13 @@ const MapSelector = () => {
         var algoName = e.target.value;
         // console.log(algoName);
         // console.log(startr, startc, endr, endc);
-        var mgalgo = new MapGenerationMap[algoName]({ start, end, board, updateItem, updateBoardSize});
+        var mgalgo = new MapGenerationMap[algoName]({ 
+            begin: begin.current,
+            end: end.current,
+            updateItem,
+            board: board.current, 
+            updateBoardSize: updateBoardSize});
+            pathFinder.current = mgalgo;
         mgalgo.excute(updateItem);
     }
     

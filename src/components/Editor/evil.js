@@ -55,6 +55,7 @@ export function addAlgo(name, code) {
     return runCodeWrapper(code);
 }
 
+// 只会在 AceWrapper 被调用！
 export function addLocalAlgoList(name, code) {
     // storeLocal(name, code);
     // 加入列表，便于后续的恢复
