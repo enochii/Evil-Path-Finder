@@ -20,6 +20,8 @@ import './Header.scss';
 import AlgoSelector from './AlgoSelector';
 import MapSelector from './MapSelector';
 import SizeSlider from './SizeSlider';
+import SpeedSlider from './SpeedSlider'
+import Typography from '@material-ui/core/Typography'
 
 
 const Header = () => {
@@ -51,8 +53,11 @@ const Header = () => {
     setType(e.target.value);
   };
 
-  const onDelayChange = (e: ElementEvent<HTMLSelectElement>) => {
-    delay.current = Number(e.target.value);
+  // const onDelayChange = (e: ElementEvent<HTMLSelectElement>) => {
+  //   delay.current = Number(e.target.value);
+  // };
+  const onDelaySliderChange = (e, nv) => {
+    delay.current = nv;
   };
 
   const onVisualize = () => {
@@ -123,10 +128,11 @@ const Header = () => {
       test = {"sch"} 
       updateBoardSize = {updateBoardSize}
       board = {board}
+      disabled = {isVisualized}
       />
       <MapSelector />
       <AlgoSelector  onAlgoChange={onAlgoChange}/>
-      <select
+      {/* <select
         className="content-header__select"
         onChange={onDelayChange}
         defaultValue={DELAY_FAST}
@@ -137,10 +143,14 @@ const Header = () => {
         <option value={DELAY_NORMAL}>normal</option>
         <option value={DELAY_FAST}>fast</option>
         <option value={DELAY_FASTEST}>fastest</option>
-      </select>
-{/*       
-      </div>
-      <div> */}
+      </select> */}
+      <Typography id="discrete-slider-restrict" className="header-font" gutterBottom>
+        Delay
+      </Typography>
+      <SpeedSlider onDelayChange = {onDelaySliderChange}
+                   disabled = {isVisualized}
+      />
+
       <button
         className="content-header__button"
         onClick={onVisualize}
@@ -189,7 +199,6 @@ const Header = () => {
       >
         Code Editor
       </button>
-      {/* </div> */}
     </div>
   );
 };

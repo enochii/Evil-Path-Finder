@@ -2,6 +2,12 @@
 @import 'styles/_placeholders';
 @import 'styles/_variables';
 
+.header-font {
+  color: royalblue;
+  // padding-left: -100px;
+  font-family: Georgia, serif;
+}
+
 .content-header {
   display: flex;
   flex-direction: row;
@@ -12,6 +18,15 @@
   box-sizing: border-box;
   font-size: 20px;
   color: white;
+
+  &__delay {
+    // margin-top: -20px 0; // ....
+    // padding: 20;
+    padding-right: 25px;
+    padding-left: 10px;
+    width: 140px;
+    height: 100%;
+  }
 
   &__slider {
     height: 100%;

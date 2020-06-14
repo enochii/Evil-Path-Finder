@@ -22,7 +22,9 @@ const SizeSlider = (props) => {
         <div className="content-header__slider"
             // disabled={isVisualized}
             id = "size-slider">
-            <Typography id="discrete-slider-restrict" gutterBottom>
+            <Typography id="discrete-slider-restrict" 
+                        className="header-font"
+                        gutterBottom>
                 Row / Col Size
             </Typography>
             <SingleSilder
@@ -32,6 +34,7 @@ const SizeSlider = (props) => {
                 min = {12}
                 max = {16}
                 handleChange = {handleRowChange}
+                disabled={props.disabled}
                 />
             <SingleSilder
                 id = 'col-slider'
@@ -40,6 +43,7 @@ const SizeSlider = (props) => {
                 min = {18}
                 max = {30}
                 handleChange = {handleColChange}
+                disabled={props.disabled}
                 />
             {/* <Typography id="discrete-slider-restrict" gutterBottom>
                 Col Size
@@ -59,6 +63,7 @@ export const SingleSilder = (props) => {
             max={props.max}
             valueLabelDisplay="auto"
             onChange={props.handleChange}
+            disabled={props.disabled}
             />
     );
 }
