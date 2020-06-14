@@ -94,7 +94,7 @@ const Provider = ({ children }: Node) => {
   }
 
   const addAlgoToHeader = (name) => {
-    if(!algorithms.current.includes(name)) algorithms.current = algorithms.current.concat(name);
+    if(!algorithms.current.includes(name.toUpperCase())) algorithms.current = algorithms.current.concat(name);
   }
   const updateBoardSize = (br, bc) => {
     board.current = createArray(br, bc);

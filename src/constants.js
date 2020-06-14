@@ -23,9 +23,9 @@ export const WALL_COLOR = Styles.wallColor;
 export const BOARD_HEIGHT = 60;
 
 // algorithm
-export const DIJKSTRA = 'dijkstra';
-export const BELLMAN_FORD = 'bellman-ford';
-export const A_STAR = 'A-star';
+export const DIJKSTRA = 'DIJKSTRA';
+export const BELLMAN_FORD = 'BELLMAN_FORD';
+export const A_STAR = 'A_STAR';
 export const DFS = 'DFS';
 export const BFS = 'BFS';
 

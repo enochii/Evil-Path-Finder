@@ -22,7 +22,7 @@ function runCodeWithEnv(obj){
 }
 
 export function runCodeWrapper(code) {
-    console.log(code);
+    // console.log(code);
     var wrapped_code = 'function(PathFinder,BOARD_ROW,BOARD_COL,ITEM_CLICKED,ITEM_VISITED,PriorityQueue){'
     + 'return ' + code +';}';
     try{
