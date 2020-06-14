@@ -24,7 +24,7 @@ export const BOARD_HEIGHT = 60;
 
 // algorithm
 export const DIJKSTRA = 'DIJKSTRA';
-export const BELLMAN_FORD = 'BELLMAN_FORD';
+export const BELLMAN_FORD = 'BELL_FORD';
 export const A_STAR = 'A_STAR';
 export const DFS = 'DFS';
 export const BFS = 'BFS';
