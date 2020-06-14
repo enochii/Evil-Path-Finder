@@ -48,7 +48,7 @@ const SizeSlider = (props) => {
     );
 };
 
-const SingleSilder = (props) => {
+export const SingleSilder = (props) => {
     return (
         <Slider
             defaultValue={props.defVal}

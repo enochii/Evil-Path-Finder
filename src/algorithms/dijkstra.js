@@ -4,14 +4,15 @@ import PriorityQueue from 'js-priority-queue';
 import {   ITEM_CLICKED, ITEM_VISITED } from 'constants.js';
 import PathFinder, { type ConstructorType } from './pathFinder';
 
+// 无类型注解
 export default class Dijkstra extends PathFinder {
-  constructor(args: ConstructorType) {
+  constructor(args) {
     super(args);
     this.pq = new PriorityQueue({ comparator: (a, b) => a.d - b.d });
   }
 
   // 奇形怪状的 path 调试贼久，以为是 Bug 
-  execute = (): boolean => {
+  execute = () => {
     const { pq, dist, prev, board, begin, end, updateItem } = this;
 
     pq.queue({ x: begin.x, y: begin.y, d: 0 });
@@ -23,9 +24,9 @@ export default class Dijkstra extends PathFinder {
       ++cnt;
       // const current: {| x: number, y: number, d: number |} = pq.peek();
       const current = pq.dequeue();
-      const currentX: number = current.x;
-      const currentY: number = current.y;
-      const currentD: number = current.d;
+      const currentX = current.x;
+      const currentY = current.y;
+      const currentD = current.d;
       if(this.board[currentX][currentY] === ITEM_VISITED) {alert(current); continue;}
       else {
         // dijkstra 访问过的点有两层
@@ -38,8 +39,8 @@ export default class Dijkstra extends PathFinder {
         find = true;
         // console.log(pq);
         pq.clear();
-        console.log(cnt);
-        console.log(dist);
+        // console.log(cnt);
+        // console.log(dist);
         return true;
       }
 
