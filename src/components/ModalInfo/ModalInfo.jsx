@@ -22,7 +22,7 @@ const ModalInfo = ({ isHelped, onHelpClose }: ModalInfoPropTypes) => {
         <div className="modal-info__row">
           <p className="modal-info__content">
             <span className="modal-info__square--initial" />
-            <p>intiial</p>
+            <p>initial</p>
           </p>
           <p className="modal-info__content">
             <span className="modal-info__square--visited" />
@@ -32,17 +32,17 @@ const ModalInfo = ({ isHelped, onHelpClose }: ModalInfoPropTypes) => {
         <div className="modal-info__row">
           <p className="modal-info__content">
             <span className="modal-info__square--clicked" />
-            <p>clicked</p>
+            <p>wall</p>
           </p>
           <p className="modal-info__content">
             <span className="modal-info__square--fixed" />
-            <p>fixed</p>
+            <p>begin end</p>
           </p>
         </div>
         <div className="modal-info__row">
           <p className="modal-info__content">
             <span className="modal-info__square--shortest" />
-            <p>shortest</p>
+            <p>path</p>
           </p>
         </div>
       </p>
@@ -56,7 +56,16 @@ const ModalInfo = ({ isHelped, onHelpClose }: ModalInfoPropTypes) => {
           <h2>by dragging</h2>
         </div>
         <div className="modal-info__row">
-          <h2>3. You can choose algorithm and speed from select box</h2>
+          <h2>3. You can choose path-finding or map-generation algorithms</h2>
+        </div>
+        <div className="modal-info__row">
+          <h2>4. You can change Borad size or delay</h2>
+        </div>
+        <div className="modal-info__row">
+          <h2>5. You can use your own algorithm !!! by code editor</h2>
+        </div>
+        <div className="modal-info__row">
+          <h2>Explore more by yourself ~~~///(^v^)\\\~~~</h2>
         </div>
       </p>
       <button onClick={onHelpClose} className="modal-info__close" type="button">

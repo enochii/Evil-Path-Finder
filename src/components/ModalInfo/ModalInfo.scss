@@ -6,8 +6,8 @@
 .modal-info {
   $self: &;
   @include modal($oc-indigo-7);
-  width: 700px;
-  height: 350px;
+  width: 800px;
+  height: 500px;
   padding: 20px;
   align-items: center;
 
