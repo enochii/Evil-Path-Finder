@@ -147,7 +147,7 @@ const Header = () => {
         disabled={isVisualized}
         type="button"
       >
-        Visualize!
+        GO!
       </button>
       <button
         className="content-header__button"

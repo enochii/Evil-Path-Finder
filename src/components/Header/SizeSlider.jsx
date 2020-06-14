@@ -29,7 +29,7 @@ const SizeSlider = (props) => {
                 id = 'row-slider'
                 defVal = {16}
                 step = {1}
-                min = {10}
+                min = {12}
                 max = {16}
                 handleChange = {handleRowChange}
                 />

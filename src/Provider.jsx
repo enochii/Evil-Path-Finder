@@ -119,7 +119,7 @@ const Provider = ({ children }: Node) => {
 
     if (timeFactor) {
       const timer = new Timer({
-        callback: () => setItem(type),
+        callback: () => setItem(type, timeFactor),
         delay: timeFactor * delay.current,
       });
       pathFinder.current.timers.push(timer);

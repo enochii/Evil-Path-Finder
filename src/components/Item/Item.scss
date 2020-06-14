@@ -18,9 +18,16 @@
   animation-fill-mode: forwards;
   animation-play-state: running;
   // background-color: #e74c3c;
-  border-radius: 10px;
+  border-radius: 8px;
   -webkit-transform: rotate(360deg);
           transform: rotate(360deg);
+}
+
+.shortest-num {
+  padding-top: 8px;
+  text-align: center;
+  // font-size: 28px;
+  color: gold;
 }
 
 @keyframes visitedAnimation {
@@ -66,7 +73,7 @@
 @keyframes shortestAnimation {
   0% {
     background-color: #e74c3c;
-    border-radius: 10px;
+    border-radius: 8px;
     -webkit-transform: rotate(0deg);
             transform: rotate(0deg);
   }
@@ -78,7 +85,7 @@
   }
   100% {
     // background-color: #e74c3c;
-    border-radius: 10px;
+    border-radius: 8px;
     -webkit-transform: rotate(360deg);
             transform: rotate(360deg);
   }

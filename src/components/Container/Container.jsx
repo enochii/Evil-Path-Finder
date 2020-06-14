@@ -40,13 +40,13 @@ const Container = () => {
   return (
     <>
       <Helmet>
-        <title>Pathfinding Visualizer</title>
+        <title>Evil Path Finder</title>
         <meta property="og:title" content="Pathfinding Visualizer" />
         <meta property="og:type" content="website" />
 
       </Helmet>
       <header className="header">
-        <h1 className="header__title">Pathfinding Visualizer</h1>
+        <h1 className="header__title">Evil Path Finder</h1>
       </header>
       <ModalError isErrorOpen={isErrorOpen} onErrorClose={onErrorClose} />
       <ModalInfo isHelped={isHelped} onHelpClose={onHelpClose} />

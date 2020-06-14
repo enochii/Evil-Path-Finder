@@ -25,11 +25,23 @@ import { pointEqual } from 'helper';
 
 const Item = ({ ridx, cidx }: { ridx: number, cidx: number }) => {
   const [type, setType] = useState(ITEM_INITIAL);
+  const [num, setNum] = useState('');
   const { setItemCache, begin, end, pathFinder, setIsVisualized, board } = useContext(
     Context,
   );
 
-  setItemCache.current[KEYS[ridx][cidx]] = setType;
+  const setTypeWrapper = (type, i) => {
+    setType(type);
+    if(type === ITEM_SHORTEST) console.log(i);
+    if(type === ITEM_SHORTEST) {
+      setNum(i);
+    } else {
+      setNum('');
+    }
+  }
+
+  // setItemCache.current[KEYS[ridx][cidx]] = setType;
+  setItemCache.current[KEYS[ridx][cidx]] = setTypeWrapper;
 
   useEffect(() => {
     if (
@@ -92,6 +104,10 @@ const Item = ({ ridx, cidx }: { ridx: number, cidx: number }) => {
   const getItemSize = () => {
 	  return JSON.stringify(BOARD_HEIGHT / board.current.length) + "vh";
   }
+
+  const getFontSize = () => {
+    return "20px";
+  }
 //   console.log(getItemSize());
 
   return (
@@ -102,13 +118,16 @@ const Item = ({ ridx, cidx }: { ridx: number, cidx: number }) => {
       data-ridx={ridx}
       data-cidx={cidx}
       style={{
+        fontSize: getFontSize(),
 		backgroundColor: getColor(),
 		height: getItemSize(),
     width: getItemSize(),
     animationName: getFrame(),
         // boxShadow: 
       }}
-    />
+    >
+      <div className="shortest-num">{num}</div>
+    </div>
     // </CSSTransition>
   );
 };
