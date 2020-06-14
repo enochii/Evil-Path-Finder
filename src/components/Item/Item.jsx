@@ -106,7 +106,8 @@ const Item = ({ ridx, cidx }: { ridx: number, cidx: number }) => {
   }
 
   const getFontSize = () => {
-    return "20px";
+    // 跟随棋盘高度摇摆~
+    return String(20*16/board.current.length)+"px";
   }
 //   console.log(getItemSize());
 

@@ -106,6 +106,7 @@ const Provider = ({ children }: Node) => {
     end.current   = {x : Math.round(br / 2), y: bc-3};
     setRow(br);
     setCol(bc);
+    clear();
   }
 
   const updateItem = (
