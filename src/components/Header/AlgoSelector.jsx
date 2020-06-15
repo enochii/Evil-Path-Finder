@@ -17,7 +17,11 @@ const AlgoSelector = (props) => {
     const onAlgoChange = props.onAlgoChange;
     // 倒序... 这样用户的算法就会排在最前面--
     const listItems = algorithms.current.reverse();//.map((algo_name) =><option key={algo_name}> {algo_name}</option>);
-
+    var options = [];
+    listItems.forEach(element => {
+        options.push({'label':element, 'value': element, id: element});
+    });
+    console.log(options)
 
     return (
         // <select
@@ -32,7 +36,7 @@ const AlgoSelector = (props) => {
         // <CustomDropdownHandle 
         <CustomDrop
         className="content-header__drop"
-         options={listItems} title={'nb'} 
+         options={options} title={'nb'} 
          onAlgoChange={onAlgoChange}
          disabled={isVisualized}/>
         // <ItemRenderer className="content-header__select" options={listItems} title={'nb'}></ItemRenderer>
