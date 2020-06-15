@@ -31,7 +31,8 @@ const AlgoSelector = (props) => {
         // <div >
         // <CustomDropdownHandle 
         <CustomDrop
-        className="content-header__drop" options={listItems} title={'nb'} />
+        className="content-header__drop"
+         options={listItems} title={'nb'} />
         // <ItemRenderer className="content-header__select" options={listItems} title={'nb'}></ItemRenderer>
         // </div>
     );

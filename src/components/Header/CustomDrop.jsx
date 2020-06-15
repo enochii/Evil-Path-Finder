@@ -2,11 +2,12 @@ import React from "react";
 import styled from "@emotion/styled";
 
 // import "./demo-styles.css";
-import { options } from "./option";
+// import { options } from "./option";
 
 import Select from "react-dropdown-select";
 
 export default class CustomDrop extends React.Component {
+    static options = [1,2];
   constructor(props) {
     super(props);
 
@@ -16,19 +17,10 @@ export default class CustomDrop extends React.Component {
       itemRenderer: true,
       optionRenderer: false,
       noDataRenderer: false,
-      selectValues: [],
-      searchBy: "username",
-      clearable: false,
-      searchable: true,
-      create: false,
-      separator: false,
-      forceOpen: false,
-      handle: true,
-      addPlaceholder: "+ click to add",
+      handle: false,
       labelField: "username",
-      valueField: "email",
-      color: "#0074D9",
-      keepSelectedInList: true,
+    //   valueField: "username",
+    //   color: "#0074D9",
       closeOnSelect: false,
       dropdownPosition: "bottom",
       direction: "ltr",
@@ -36,11 +28,10 @@ export default class CustomDrop extends React.Component {
     };
   }
   
-//   options = ['1', '2']
   setValues = selectValues => this.setState({ selectValues });
 
   itemRenderer = ({ item, itemIndex, props, state, methods }) => (
-    <div key={item[props.valueField]} onClick={() => methods.addItem(item)}>
+    <div key={item} onClick={() => {methods.addItem(item); console.log(item)}} className={'algo-option'}>
       <div style={{ margin: "10px", width:"160px" }}>
         <input type="checkbox" checked={methods.isSelected(item)} />
         &nbsp;&nbsp;&nbsp;{item[props.labelField]}
@@ -48,17 +39,16 @@ export default class CustomDrop extends React.Component {
     </div>
   );
 
-  optionRenderer = ({ option, props, state, methods }) => (
-    <React.Fragment>
-      <div style={{ margin: "10px", width:"160px" }}
-            onClick={event => methods.removeItem(event, option, true)}>
-        {option.label}
-      </div>
-    </React.Fragment>
-  );
-
+//   optionRenderer = ({ option, props, state, methods }) => (
+//     <React.Fragment>
+//       <div style={{ margin: "10px", width:"120px" }}
+//             onClick={event => methods.removeItem(event, option, true)}>
+//         {option.label}
+//       </div>
+//     </React.Fragment>
+//   );
+    
   render() {
-      console.log(options);
     return (
       <div className={this.props.className}>
           <div style={{ maxWidth: "350px", margin: "0 auto" }}>
@@ -67,23 +57,17 @@ export default class CustomDrop extends React.Component {
             //   addPlaceholder={this.state.addPlaceholder}
               color={this.state.color}
               disabled={this.state.disabled}
-              searchable={this.state.searchable}
               
               dropdownHandle={this.state.handle}
               dropdownHeight={this.state.dropdownHeight}
               
-              values={[options.find(opt => opt.username === "Delphine")]}
+            //   values={[options.find(opt => opt.username === "Delphine")]}
               options={options}
-              dropdownGap={5}
+            //   dropdownGap={5}
               
               onChange={values => this.setValues(values)}
-              noDataLabel="No matches found"
               closeOnSelect={this.state.closeOnSelect}
-              noDataRenderer={
-                this.state.noDataRenderer
-                  ? () => this.noDataRenderer()
-                  : undefined
-              }
+              
               dropdownPosition={this.state.dropdownPosition}
               itemRenderer={
                 this.state.itemRenderer
@@ -92,61 +76,15 @@ export default class CustomDrop extends React.Component {
                   : undefined
               }
        
-              optionRenderer={
-                this.state.optionRenderer
-                  ? (option, props, state, methods) =>
-                      this.optionRenderer(option, props, state, methods)
-                  : undefined
-              }   
+            //   optionRenderer={
+            //     this.state.optionRenderer
+            //       ? (option, props, state, methods) =>
+            //           this.optionRenderer(option, props, state, methods)
+            //       : undefined
+            //   }   
             />
           </div>   
         {/* <p>
-          <input
-            type="checkbox"
-            checked={this.state.searchable}
-            onChange={() =>
-              this.setState({
-                searchable: !this.state.searchable
-              })
-            }
-          />{" "}
-          Searchable
-          <br />
-          <input
-            type="checkbox"
-            checked={this.state.handle}
-            onChange={() =>
-              this.setState({
-                handle: !this.state.handle
-              })
-            }
-          />{" "}
-          Dropdown handle
-          <br />
-          
-          <input
-            type="checkbox"
-            checked={this.state.itemRenderer}
-            onChange={() =>
-              this.setState({
-                itemRenderer: !this.state.itemRenderer
-              })
-            }
-          />{" "}
-          Custom dropdown item renderer
-          
-          <br />
-          <input
-            type="checkbox"
-            checked={this.state.closeOnSelect}
-            onChange={() =>
-              this.setState({
-                closeOnSelect: !this.state.closeOnSelect
-              })
-            }
-          />{" "}
-          Close dropdown on select/deselect
-          <br />
           Custom color{" "}
           <input
             type="color"
