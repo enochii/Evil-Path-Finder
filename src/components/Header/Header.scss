@@ -61,13 +61,27 @@
   }
 
   &__drop {
-    
+    height: 100%;
     width: 160px;
+    margin-right: 20px;
+    border-radius: none;
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    -webkit-appearance: none;
     background: $oc-indigo-5;
-    // background-image: url("data:image/svg+xml;utf8,<svg fill='white' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+    background-image: url("data:image/svg+xml;utf8,<svg fill='white' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
     background-repeat: no-repeat;
     background-position-x: 100%;
     background-position-y: 5px;
+
+
+    &:disabled {
+      @extend %disabled;
+    }
   }
 
   &__select {
@@ -91,9 +105,9 @@
     padding-left: 10px;
     // padding: 10px 0;
 
-    &:disabled {
-      @extend %disabled;
-    }
+    // &:disabled {
+    //   @extend %disabled;
+    // }
   }
 
   &__button {

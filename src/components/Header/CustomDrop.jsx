@@ -12,7 +12,7 @@ export default class CustomDrop extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      disabled: false,
+      // disabled: false,
       itemRenderer: true,
       // handle: true,
 
@@ -45,7 +45,7 @@ export default class CustomDrop extends React.Component {
       <div className={this.props.className}>
         <div style={{ maxWidth: "350px", margin: "0 auto" }}>
           <StyledSelect
-            disabled={this.state.disabled}
+            disabled={this.props.disabled}
             dropdownHandle={this.state.handle}
             dropdownHeight={this.state.dropdownHeight}
             direction={this.state.direction}
