@@ -19,13 +19,13 @@ export function localItemExist(key) {
 // todo : -> board.length
 function runCodeWithEnv(obj){
     return Function('"use strict";return (' + obj + ')')()(
-        PathFinder, BOARD_ROW,BOARD_COL,ITEM_CLICKED,ITEM_VISITED, PriorityQueue
+        PathFinder, BOARD_ROW,BOARD_COL,ITEM_CLICKED,ITEM_VISITED, PriorityQueue,Queue
     );
 }
 
 export function runCodeWrapper(code) {
     // console.log(code);
-    var wrapped_code = 'function(PathFinder,BOARD_ROW,BOARD_COL,ITEM_CLICKED,ITEM_VISITED,PriorityQueue){'
+    var wrapped_code = 'function(PathFinder,BOARD_ROW,BOARD_COL,ITEM_CLICKED,ITEM_VISITED,PriorityQueue,Queue){'
     + 'return ' + code +';}';
     try{
         var cls = runCodeWithEnv(wrapped_code);

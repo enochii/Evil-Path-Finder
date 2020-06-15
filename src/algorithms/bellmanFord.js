@@ -4,7 +4,7 @@ import {   ITEM_VISITED } from 'constants.js';
 import PathFinder from './pathFinder';
 
 export default class BellmanFord extends PathFinder {
-  _relax = (timeFactor: number): {| time: number, find: boolean |} => {
+  _relax = (timeFactor) => {
     const { dist, prev, end, updateItem, board } = this;
     let find = false;
     let time = timeFactor;
@@ -42,7 +42,7 @@ export default class BellmanFord extends PathFinder {
     return { time, find };
   };
 
-  execute = (): boolean => {
+  execute = () => {
     console.log('bellford');
     const { _relax, updateItem, end } = this;
 
