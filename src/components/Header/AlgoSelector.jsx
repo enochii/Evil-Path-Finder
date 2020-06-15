@@ -16,11 +16,12 @@ const AlgoSelector = (props) => {
     // console.log(props);
     const onAlgoChange = props.onAlgoChange;
     // 倒序... 这样用户的算法就会排在最前面--
-    const listItems = algorithms.current.reverse();//.map((algo_name) =><option key={algo_name}> {algo_name}</option>);
+    const listItems = algorithms.current;//.map((algo_name) =><option key={algo_name}> {algo_name}</option>);
     var options = [];
     listItems.forEach(element => {
         options.push({'label':element, 'value': element, id: element});
     });
+    options.reverse();
     console.log(options)
 
     return (

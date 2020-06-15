@@ -14,7 +14,7 @@ export default class CustomDrop extends React.Component {
     this.state = {
       disabled: false,
       itemRenderer: true,
-      handle: true,
+      // handle: true,
 
       labelField: "label",
       valueField: "value",
@@ -22,13 +22,19 @@ export default class CustomDrop extends React.Component {
       dropdownHeight: "300px"
     };
   }
-  setValues = selectValues => this.setState({ selectValues });
+  // setValues = selectValues => this.setState({ selectValues });
+  onChange(val) {
+    console.log(val);
+    var algo = val[0]['value'];
+    console.log(algo);
+    this.props.onAlgoChange(algo);
+  }
 
   itemRenderer = ({ item, itemIndex, props, state, methods }) => (
-    <div key={item[props.valueField]} onClick={() => methods.addItem(item)}>
-      <div style={{ margin: "10px" }}>
-        <input type="checkbox" checked={methods.isSelected(item)} />
-        &nbsp;&nbsp;&nbsp;{item[props.labelField]}
+    <div key={item[props.valueField]} onClick={() => methods.addItem(item)} className={'algo-option'}>
+      <div style={{ margin: "5px" }}>
+        <span style={{float: "right"}}>{item[props.labelField]}</span>
+        <button className='content-header__button--drop'>X</button>
       </div>
     </div>
   );
@@ -43,11 +49,11 @@ export default class CustomDrop extends React.Component {
             dropdownHandle={this.state.handle}
             dropdownHeight={this.state.dropdownHeight}
             direction={this.state.direction}
-            // values={[options.find(opt => opt.username === "Delphine")]}
+            values={[this.props.options.find(opt => true)]}
             labelField={this.state.labelField}
             valueField={this.state.valueField}
             options={this.props.options}
-            // onChange={values => this.setValues(values)}
+            onChange={values => this.onChange(values)}
             closeOnSelect={this.state.closeOnSelect}
             dropdownPosition={this.state.dropdownPosition}
             itemRenderer={
