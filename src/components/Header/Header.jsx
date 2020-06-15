@@ -49,8 +49,11 @@ const Header = () => {
     updateBoardSize,
   } = context;
   
-  const onAlgoChange = (e: ElementEvent<HTMLSelectElement>) => {
-    setType(e.target.value);
+  // const onAlgoChange = (e: ElementEvent<HTMLSelectElement>) => {
+  //   setType(e.target.value);
+  // };
+  const onAlgoChange = (nv) => {
+    setType(nv);
   };
 
   // const onDelayChange = (e: ElementEvent<HTMLSelectElement>) => {

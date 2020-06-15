@@ -32,7 +32,9 @@ const AlgoSelector = (props) => {
         // <CustomDropdownHandle 
         <CustomDrop
         className="content-header__drop"
-         options={listItems} title={'nb'} />
+         options={listItems} title={'nb'} 
+         onAlgoChange={onAlgoChange}
+         disabled={isVisualized}/>
         // <ItemRenderer className="content-header__select" options={listItems} title={'nb'}></ItemRenderer>
         // </div>
     );

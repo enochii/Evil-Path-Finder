@@ -12,9 +12,17 @@
     background: $oc-indigo-5;
     background-image: url("data:image/svg+xml;utf8,<svg fill='white' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
     background-repeat: no-repeat;
-    background-position-x: 100%;
+    // background-position-x: 100%;
     background-position-y: 5px;
 }
+// .drop-btn {
+//   height: 12px;
+//   width: 12px;
+//   background-color: white;
+//   text-align: center;
+//   // color: whitesmoke;
+//   font-size: 12px;
+// }
 
 .content-header {
   display: flex;
@@ -115,6 +123,13 @@
       @extend #{$button};
       background-color: $oc-green-6;
       box-shadow: 0 3px 3px 0 $oc-green-3;
+    }
+    &--drop {
+      @extend #{$button};
+      height: 16px;
+      width: 10px;
+      font-size: 12px;
+      // vertical-align: super;
     }
 
     &:last-child {
