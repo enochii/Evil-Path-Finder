@@ -1,7 +1,7 @@
 import PriorityQueue from 'js-priority-queue';
 import Queue from 'queue-fifo';
 
-import {BOARD_ROW,BOARD_COL,ITEM_CLICKED,ITEM_VISITED, INITIAL_COLOR} from '../../constants.js'
+import {BOARD_ROW,BOARD_COL,ITEM_CLICKED,ITEM_VISITED, INITIAL_COLOR,ORGINAL_ALGOS} from '../../constants.js'
 import PathFinder from 'algorithms/pathFinder'
 import pathfinderMap from 'algorithms/index'
 
@@ -9,7 +9,9 @@ import pathfinderMap from 'algorithms/index'
 export const ALGO_LIST = 'EPF_ALGO_LIST';
 
 export function localItemExist(key) {
-    return !(localStorage.getItem(key) === null);
+    var val = localStorage.getItem(key);
+    console.log(val===null);
+    return !(val === null) && !(val === "undefined");
 }
 
 // 单纯的 eval 只能引用局部变量
@@ -65,10 +67,10 @@ function modifyLocalAlgoList(name, delegate) {
         var algoList = [];
     } else {
         var algoList = localStorage.getItem(ALGO_LIST);
-        console.log(algoList);
+        // console.log(algoList);
         algoList = JSON.parse(algoList);
     }
-    console.log(algoList);
+    // console.log(algoList);
     // todo?
     algoList = delegate(algoList, name);
     localStorage.setItem(ALGO_LIST, JSON.stringify(algoList));
@@ -82,6 +84,24 @@ export function addLocalAlgoList(name, code) {
     }
     // todo?
     modifyLocalAlgoList(name, add);
+}
+// 删除某个算法
+export function rmLocalAlgoList(name, code) {
+    function rm(algoList, name) {
+        console.log(name);
+        var index = algoList.indexOf(name);
+        console.log(algoList);
+        if(index == -1) {
+            alert("You'd better not to remove original ALGO!");
+            return algoList;
+        }
+        console.log(index);
+        algoList.splice(algoList.indexOf(name), 1);
+        // console.log('deleted: ', algoList); 
+        return algoList;
+    }
+    // todo?
+    modifyLocalAlgoList(name, rm);
 }
 
 function storeLocal(name, code) {

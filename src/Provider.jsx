@@ -16,6 +16,7 @@ import {
   DFS,
   A_STAR,
   DIJKSTRA,
+  ORGINAL_ALGOS,
 } from './constants';
 import { ALGO_LIST, localItemExist, runCodeWrapper } from 'components/Editor/evil';
 import { getLocalAlgoList } from 'helper';
@@ -52,7 +53,7 @@ export type ContextType = {|
 |};
 
 const Context = createContext<ContextType>();
-const ALGOS = [DIJKSTRA ,BELLMAN_FORD, BFS, DFS, A_STAR];
+// const ALGOS = [DIJKSTRA ,BELLMAN_FORD, BFS, DFS, A_STAR];
 
 const Provider = ({ children }: Node) => {
   const [isPathExist, setIsPathExist] = useState<boolean>(true);
@@ -60,7 +61,7 @@ const Provider = ({ children }: Node) => {
   const [isHelped, setIsHelped] = useState<boolean>(true);
   // 代码编辑器是否打开
   const [isCoding, setIsCoding] = useState<boolean>(false);
-  const algorithms = useRef<Array<string>>(ALGOS);
+  const algorithms = useRef<Array<string>>(ORGINAL_ALGOS);
 
   const begin = useRef<PositionType>({ x: Math.round(BOARD_ROW / 2), y: 2 });
   const end = useRef<PositionType>({

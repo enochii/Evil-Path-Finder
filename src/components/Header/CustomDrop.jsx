@@ -7,6 +7,7 @@ import styled from "@emotion/styled";
 // import { options } from "./options";
 
 import Select from "react-dropdown-select";
+import { rmLocalAlgoList } from "components/Editor/evil";
 
 export default class CustomDrop extends React.Component {
   constructor(props) {
@@ -24,17 +25,23 @@ export default class CustomDrop extends React.Component {
   }
   // setValues = selectValues => this.setState({ selectValues });
   onChange(val) {
-    console.log(val);
+    // console.log(val);
     var algo = val[0]['value'];
-    console.log(algo);
+    // console.log(algo);
     this.props.onAlgoChange(algo);
+  }
+
+  deleteAlgoByName(name) {
+    console.log(name);
+    rmLocalAlgoList(name);
   }
 
   itemRenderer = ({ item, itemIndex, props, state, methods }) => (
     <div key={item[props.valueField]} onClick={() => methods.addItem(item)} className={'algo-option'}>
       <div style={{ margin: "5px" }}>
         <span style={{float: "right"}}>{item[props.labelField]}</span>
-        <button className='content-header__button--drop'>X</button>
+        {/* 少些了 箭头函数还行，然后渲染期间所有按钮onclick都执行 。。。*/}
+        <button className='content-header__button--drop' onClick={() => this.deleteAlgoByName(item[props.valueField])}>X</button>
       </div>
     </div>
   );

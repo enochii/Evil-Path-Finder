@@ -25,9 +25,11 @@ export const BOARD_HEIGHT = 60;
 // algorithm
 export const DIJKSTRA = 'DIJKSTRA';
 export const BELLMAN_FORD = 'BELL_FORD';
-export const A_STAR = 'A_STAR';
+export const A_STAR = 'ASTAR';
 export const DFS = 'DFS';
 export const BFS = 'BFS';
+
+export const ORGINAL_ALGOS = [DIJKSTRA ,BELLMAN_FORD, BFS, DFS, A_STAR];
 
 // uuid
 export const KEYS = [];
