@@ -68,14 +68,15 @@ const Header = () => {
     clearPath();
     setIsVisualized(true);
 
-    // console.log(type);
-    // console.log(pathfinderMap[type]);
+    console.log(type);
+    console.log(pathfinderMap);
     pathFinder.current = new pathfinderMap[type]({
       begin: begin.current,
       end: end.current,
       updateItem,
       board: board.current,
     });
+    console.log(pathFinder.current);
     const isPossiblePath = pathFinder.current.execute();
     setIsPathExist(isPossiblePath);
   };

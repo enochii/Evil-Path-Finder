@@ -32,7 +32,7 @@ const Item = ({ ridx, cidx }: { ridx: number, cidx: number }) => {
 
   const setTypeWrapper = (type, i) => {
     setType(type);
-    if(type === ITEM_SHORTEST) console.log(i);
+    // if(type === ITEM_SHORTEST) console.log(i);
     if(type === ITEM_SHORTEST) {
       setNum(i);
     } else {

@@ -28,12 +28,13 @@ export function runCodeWrapper(code) {
     try{
         var cls = runCodeWithEnv(wrapped_code);
         // name -> cls
-        pathfinderMap[cls.name] = cls;
+        var name = cls.name.toUpperCase();
+        pathfinderMap[name] = cls;
         // 这里的名字是正确的，代码也是预处理过的...
-        storeLocal(cls.name, code);
+        storeLocal(name, code);
 
         console.log(cls); 
-        return cls.name;
+        return name;
     } catch (error) {
         console.log(error);
         alert(error);
@@ -55,8 +56,8 @@ export function addAlgo(name, code) {
     return runCodeWrapper(code);
 }
 
-// 只会在 AceWrapper 被调用！
-export function addLocalAlgoList(name, code) {
+// delegate 可以是添加或者删除
+function modifyLocalAlgoList(name, delegate) {
     // storeLocal(name, code);
     // 加入列表，便于后续的恢复
     if(!localItemExist(ALGO_LIST)) {
@@ -69,8 +70,18 @@ export function addLocalAlgoList(name, code) {
     }
     console.log(algoList);
     // todo?
-    algoList = algoList.concat(name);
+    algoList = delegate(algoList, name);
     localStorage.setItem(ALGO_LIST, JSON.stringify(algoList));
+}
+
+// 只会在 AceWrapper 被调用！
+export function addLocalAlgoList(name, code) {
+    function add(algoList, name) {
+        algoList = algoList.concat(name); 
+        return algoList;
+    }
+    // todo?
+    modifyLocalAlgoList(name, add);
 }
 
 function storeLocal(name, code) {

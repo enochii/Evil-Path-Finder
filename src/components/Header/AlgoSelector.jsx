@@ -22,7 +22,7 @@ const AlgoSelector = (props) => {
         options.push({'label':element, 'value': element, id: element});
     });
     options.reverse();
-    console.log(options)
+    // console.log(options)
 
     return (
         // <select

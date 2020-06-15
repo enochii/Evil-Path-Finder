@@ -93,8 +93,11 @@ const Provider = ({ children }: Node) => {
     return arr;
   }
 
+  const hasAlgo = (name) => {
+    return algorithms.current.includes(name.toUpperCase());
+  }
   const addAlgoToHeader = (name) => {
-    if(!algorithms.current.includes(name.toUpperCase())) algorithms.current = algorithms.current.concat(name);
+    if(!hasAlgo(name)) algorithms.current = algorithms.current.concat(name.toUpperCase());
   }
   const updateBoardSize = (br, bc) => {
     board.current = createArray(br, bc);
@@ -160,7 +163,7 @@ const Provider = ({ children }: Node) => {
     // restore
     algoNames.forEach(algo => {
 		// todo : 如果覆盖自带的算法可能会有点问题
-		if(algorithms.current.includes(algo)) {
+		if(hasAlgo(algo)) {
 			console.log('already load algo', algo);
 			return;
 		}

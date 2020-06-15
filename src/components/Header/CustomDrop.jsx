@@ -40,7 +40,7 @@ export default class CustomDrop extends React.Component {
   );
 
   render() {
-    console.log(this.props.options);
+    // console.log(this.props.options);
     return (
       <div className={this.props.className}>
         <div style={{ maxWidth: "350px", margin: "0 auto" }}>
