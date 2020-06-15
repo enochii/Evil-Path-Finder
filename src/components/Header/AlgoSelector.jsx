@@ -14,6 +14,7 @@ const AlgoSelector = (props) => {
     const onAlgoChange = props.onAlgoChange;
     // 倒序... 这样用户的算法就会排在最前面--
     const listItems = algorithms.current.reverse().map((algo_name) =><option key={algo_name}> {algo_name}</option>);
+    algorithms.current.reverse(); // 副作用。。
 
     return (
         <select
