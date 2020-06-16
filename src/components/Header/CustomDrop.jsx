@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import styled from "@emotion/styled";
+import { ORGINAL_ALGOS } from "constants.js"
 
 // import "./demo-styles.css";
 
@@ -36,7 +37,9 @@ export default class CustomDrop extends React.Component {
     rmLocalAlgoList(name);
   }
 
-  itemRenderer = ({ item, itemIndex, props, state, methods }) => (
+  itemRenderer = ({ item, itemIndex, props, state, methods }) => {
+    return (itemIndex + ORGINAL_ALGOS.length<this.props.options.length)?
+    (
     <div key={item[props.valueField]} onClick={() => methods.addItem(item)} className={'algo-option'}>
       <div style={{ margin: "5px" }}>
         <span style={{float: "right"}}>{item[props.labelField]}</span>
@@ -44,7 +47,14 @@ export default class CustomDrop extends React.Component {
         <button className='content-header__button--drop' onClick={() => this.deleteAlgoByName(item[props.valueField])}>X</button>
       </div>
     </div>
+  ):(
+    <div key={item[props.valueField]} onClick={() => methods.addItem(item)} className={'algo-option'}>
+      <div style={{ margin: "5px" }}>
+        <span style={{float: "right"}}>{item[props.labelField]}</span>
+      </div>
+    </div>
   );
+}
 
   render() {
     // console.log(this.props.options);

@@ -19,6 +19,8 @@
   animation-play-state: running;
   // background-color: #e74c3c;
   border-radius: 8px;
+  background-size: cover;
+  // background-image: url('../../styles/circle.svg');
   -webkit-transform: rotate(360deg);
           transform: rotate(360deg);
 }

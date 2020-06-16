@@ -17,9 +17,11 @@ import {
   ITEM_WALL,
   WALL_COLOR,
   BOARD_HEIGHT,
+  ITEM_FIXED,
 } from 'constants.js';
 import './Item.scss';
 import { pointEqual } from 'helper';
+import Background from '../../styles/circle.svg'
 
 
 
@@ -65,11 +67,10 @@ const Item = ({ ridx, cidx }: { ridx: number, cidx: number }) => {
   }, [type, end, pathFinder, ridx, cidx, setIsVisualized]); // 仅在这些值更改时进行更新
 
   const getColor = () => {
-    if (
-      (ridx === begin.current.x && cidx === begin.current.y) ||
-      (ridx === end.current.x && cidx === end.current.y)
-    ) {
-      return FIXED_COLOR;
+    if (ridx === begin.current.x && cidx === begin.current.y)return FIXED_COLOR;
+    else if(ridx === end.current.x && cidx === end.current.y)
+    {
+      return 'white';
     }
     // todo: 把常量换成数字，做个数组
     if (type === ITEM_VISITED) {
@@ -110,6 +111,10 @@ const Item = ({ ridx, cidx }: { ridx: number, cidx: number }) => {
     return String(20*16/board.current.length)+"px";
   }
 //   console.log(getItemSize());
+  const getBgImage = () => {
+    var link = `url(${Background})`;
+    return (ridx === end.current.x && cidx === end.current.y)? link : 'none'
+  }
 
   return (
     // <CSSTransition in="true" timeout={200} classNames="example">
@@ -124,6 +129,7 @@ const Item = ({ ridx, cidx }: { ridx: number, cidx: number }) => {
 		height: getItemSize(),
     width: getItemSize(),
     animationName: getFrame(),
+    backgroundImage: getBgImage(),
         // boxShadow: 
       }}
     >

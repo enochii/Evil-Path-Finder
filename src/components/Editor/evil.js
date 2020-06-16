@@ -92,8 +92,8 @@ export function rmLocalAlgoList(name, code) {
         var index = algoList.indexOf(name);
         console.log(algoList);
         if(index == -1) {
-            alert("You'd better not to remove original ALGO!");
-            return algoList;
+            console.log("You'd better not to remove original ALGO!");
+            // return algoList;
         }
         console.log(index);
         algoList.splice(algoList.indexOf(name), 1);
