@@ -169,7 +169,7 @@ const Header = () => {
         disabled={isVisualized && !pause}
         type="button"
       >
-        Clear All
+        Clear Board
       </button>
       <button
         className="content-header__button"
@@ -193,7 +193,7 @@ const Header = () => {
         disabled={isVisualized && !pause}
         type="button"
       >
-        How to use?
+        How to play?
       </button>
       <button
         className="content-header__button--usage"

@@ -29,6 +29,6 @@ export default class MgBase {
     canSetWall(x, y) {
         const {begin, end } = this;
         // console.log(begin);
-        return !pointEqual(x,y,begin) || !pointEqual(x,y,end);
+        return !pointEqual(x,y,begin) && !pointEqual(x,y,end);
     }
 }

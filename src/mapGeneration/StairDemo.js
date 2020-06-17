@@ -15,43 +15,28 @@ export default class Stair extends MgBase {
 		console.log(board);
         let currentIdX = board.length - 1;
         let currentIdY = 0;
-        // let relevantStatuses = ["start", "target", "object"];
+        
         while (currentIdX > 0 && currentIdY < board[0].length) {
-        //   let currentId = `${currentIdX}-${currentIdY}`;
-        //   let currentNode = board.nodes[currentId];
-        //   let currentHTMLNode = document.getElementById(currentId);
-          if (this.canSetWall(currentIdX, currentIdY)) {
-            // currentNode.status = "wall";
-			// board.wallsToAnimate.push(currentHTMLNode);
-			this.updateItem_(currentIdX, currentIdY, ITEM_CLICKED, 0.2);
-          }
-          currentIdX--;
-          currentIdY++;
+          	if (this.canSetWall(currentIdX, currentIdY)) {
+				this.updateItem_(currentIdX, currentIdY, ITEM_CLICKED, 0.2);
+          	}
+			currentIdX--;
+			currentIdY++;
 		}
 		currentIdX++;
         while (currentIdX < board.length - 2 && currentIdY < board[0].length) {
-        //   let currentId = `${currentIdX}-${currentIdY}`;
-        //   let currentNode = board.nodes[currentId];
-        //   let currentHTMLNode = document.getElementById(currentId);
-          if (this.canSetWall(currentIdX, currentIdY)) {
-            // currentNode.status = "wall";
-			// board.wallsToAnimate.push(currentHTMLNode);
+		if (this.canSetWall(currentIdX, currentIdY)) {
 			this.updateItem_(currentIdX, currentIdY, ITEM_CLICKED, 0.2);
-          }
+		}
           currentIdX++;
           currentIdY++;
         }
         while (currentIdX > 0 && currentIdY < board[0].length - 1) {
-        //   let currentId = `${currentIdX}-${currentIdY}`;
-        //   let currentNode = board.nodes[currentId];
-        //   let currentHTMLNode = document.getElementById(currentId);
-          if (this.canSetWall(currentIdX, currentIdY)) {
-            // currentNode.status = "wall";
-			// board.wallsToAnimate.push(currentHTMLNode);
-			this.updateItem_(currentIdX, currentIdY, ITEM_CLICKED, 0.2);
-          }
-          currentIdX--;
-          currentIdY++;
+          	if (this.canSetWall(currentIdX, currentIdY)) {
+      			this.updateItem_(currentIdX, currentIdY, ITEM_CLICKED, 0.2);
+          	}
+			currentIdX--;
+			currentIdY++;
         }
     }    
 }

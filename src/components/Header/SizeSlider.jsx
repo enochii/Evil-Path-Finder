@@ -29,7 +29,7 @@ const SizeSlider = (props) => {
             </Typography>
             <SingleSilder
                 id = 'row-slider'
-                defVal = {12}
+                defVal = {16}
                 step = {1}
                 min = {10}
                 max = {16}
@@ -38,7 +38,7 @@ const SizeSlider = (props) => {
                 />
             <SingleSilder
                 id = 'col-slider'
-                defVal = {26}
+                defVal = {30}
                 step = {1}
                 min = {18}
                 max = {30}
