@@ -4,9 +4,7 @@
 
 import React, {useState, useContext} from "react";
 import { Context} from '../../Provider.jsx';
-// import { DropdownButton, Dropdown } from 'react-bootstrap'
-// import ItemRenderer from './DropDown'
-import CustomDropdownHandle from './DropHandler'
+
 import CustomDrop from "./CustomDrop.jsx";
 
 const AlgoSelector = (props) => {
