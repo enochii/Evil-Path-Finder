@@ -69,7 +69,7 @@ const AceWrapper = () => {
           enableSnippets: true
         }}
         width="1100px"
-        height="750px"
+        height="500px"
         fontSize="18px"
          // 这个不加字符串都被codeText吃了，啥都没了
         value={state.codeText}
