@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/Evil-Path-Finder/precache-manifest.221a4772f12398833cec5bf164b650d9.js"
+  "/Evil-Path-Finder/precache-manifest.ff3e63781dc2ac2a4da323dfe8c98479.js"
 );
 
 self.addEventListener('message', (event) => {
