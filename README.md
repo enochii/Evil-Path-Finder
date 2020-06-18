@@ -45,11 +45,11 @@ Demo： https://hangshuaibi.github.io/Evil-Path-Finder/
 
 #### 简单教程
 
-- 选择地图生成算法
+- 选择地图生成算法（可选）
 
 <img src="readme.assets/image-20200618103707806.png" alt="image-20200618103707806" style="zoom:50%;" />
 
-- 选择搜索算法（可选）
+- 选择搜索算法
 
 <img src="readme.assets/image-20200617103808151.png" alt="image-20200617103808151" style="zoom: 50%;" />
 
@@ -127,6 +127,8 @@ Demo： https://hangshuaibi.github.io/Evil-Path-Finder/
 
 ### 代码编辑器
 
+> 内嵌了 React-Ace
+
 #### 基本介绍
 
 点击右侧的 `CODE EDITOR` 按钮可以呼出代码编辑器：
@@ -163,3 +165,9 @@ Demo： https://hangshuaibi.github.io/Evil-Path-Finder/
 ---
 
 更多功能，请自行探索~
+
+### 参考
+
+ https://github.com/baeharam/Pathfinding-Visualizer 
+
+ https://github.com/clementmihailescu/Pathfinding-Visualizer 
