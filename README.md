@@ -10,29 +10,46 @@
 
 本项目是一个**寻路算法的可视化**，同时**支持用户自定义算法**并上传演示（可试用`algorithm`文件夹下的部分 `*.js`如`bfs.js` 进行尝试 or `code_editor_sample`文件夹）。
 
-点击`HOW TO PLAY?`可以呼出帮助界面
+点击`HOW TO PLAY?`可以呼出帮助界面（**简单教程请看 How to Run 小节**）
 
 <img src="readme.assets/image-20200617103100074.png" alt="image-20200617103100074" style="zoom: 50%;" />
 
 不同颜色的格子表示不同的格子类型：
 
-- 起点 START
-- 终点 END
-- 障碍（墙） WALL
-- 空白点 INITIAL
-- 路径 PATH
+- 起点， START <img src="README.assets/image-20200618102620373.png" alt="image-20200618102620373" style="zoom:50%;" />
+- 终点， END <img src="README.assets/image-20200618102555909.png" alt="image-20200618102555909" style="zoom:50%;" />
+- 障碍（墙），可访问， WALL <img src="README.assets/image-20200618102637325.png" alt="image-20200618102637325" style="zoom:50%;" />
+- 空白，可访问， INITIAL <img src="README.assets/image-20200618102653519.png" alt="image-20200618102653519" style="zoom:50%;" />
+- 搜索到的最短路径， PATH <img src="README.assets/image-20200618102705556.png" alt="image-20200618102705556" style="zoom:50%;" />
 
 ### Technique
 
 - React
 - scss
 
-### Run
+### How to Run
 
 ```bash
 yarn install
 yarn start
 ```
+
+Demo： https://hangshuaibi.github.io/Evil-Path-Finder/ 
+
+> 好像用 vpn 加载会快很多
+
+#### 简单教程
+
+- 选择地图生成算法
+
+<img src="README.assets/image-20200618103707806.png" alt="image-20200618103707806" style="zoom:50%;" />
+
+- 选择搜索算法（可选）
+
+<img src="readme.assets/image-20200617103808151.png" alt="image-20200617103808151" style="zoom: 50%;" />
+
+- 点击 `GO!` 开始搜索路径！
+  - 如果告知无法找到路径，则重新照着教程操作，总有一次能运行~ : )
 
 ### 背景介绍
 
@@ -99,7 +116,7 @@ yarn start
 - Bell Ford
 - Dijkstra
 
-找到的路径是否视最短路径，视具体算法性质而定，除 dfs 外可保证找到的路径是最短路径
+找到的路径是否视最短路径，视具体算法性质而定，除 dfs 外其他算法均可保证找到的路径是最短路径
 
 除以上提供的算法外，用户还可以自定义算法，后面会重点介绍。
 
@@ -117,6 +134,9 @@ yarn start
 
 <img src="readme.assets/image-20200617103500317.png" alt="image-20200617103500317" style="zoom:33%;" />
 
+> - 你可以将 custom_editor_example 文件下的 .js 复制到编辑器中
+> - 或者使用 algorithm/ 文件夹下的 dfs.js / bfs.js / bell-ford.js / astar.js / dijkstra.js
+
 #### 重置算法和保存、删除
 
 点击 `RESET` 可以将重置代码，每次提交系统都会自动为用户保存代码。**代码编辑器的最新版本会被持久化，刷新界面后仍可以修改、运行自定义算法。**
@@ -125,7 +145,7 @@ yarn start
 
 <img src="readme.assets/image-20200617103808151.png" alt="image-20200617103808151" style="zoom: 50%;" />
 
-这里没有（故意隐藏）提供系统提供的原始算法的删除，主要是考虑到用户误删导致重新恢复较为繁琐。
+这里（故意）没有提供系统原始算法的删除，主要是考虑到用户误删导致重新恢复较为繁琐。
 
 ### 杂项
 
