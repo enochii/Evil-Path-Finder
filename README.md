@@ -20,11 +20,11 @@
 
 不同颜色的格子表示不同的格子类型：
 
-- 起点， START <img src="README.assets/image-20200618102620373.png" alt="image-20200618102620373" style="zoom:50%;" />
-- 终点， END <img src="README.assets/image-20200618102555909.png" alt="image-20200618102555909" style="zoom:50%;" />
-- 障碍（墙），可访问， WALL <img src="README.assets/image-20200618102637325.png" alt="image-20200618102637325" style="zoom:50%;" />
-- 空白，可访问， INITIAL <img src="README.assets/image-20200618102653519.png" alt="image-20200618102653519" style="zoom:50%;" />
-- 搜索到的最短路径， PATH <img src="README.assets/image-20200618102705556.png" alt="image-20200618102705556" style="zoom:50%;" />
+- 起点， START <img src="readme.assets/image-20200618102620373.png" alt="image-20200618102620373" style="zoom:50%;" />
+- 终点， END <img src="readme.assets/image-20200618102555909.png" alt="image-20200618102555909" style="zoom:50%;" />
+- 障碍（墙），可访问， WALL <img src="readme.assets/image-20200618102637325.png" alt="image-20200618102637325" style="zoom:50%;" />
+- 空白，可访问， INITIAL <img src="readme.assets/image-20200618102653519.png" alt="image-20200618102653519" style="zoom:50%;" />
+- 搜索到的最短路径， PATH <img src="readme.assets/image-20200618102705556.png" alt="image-20200618102705556" style="zoom:50%;" />
   - 路径上会有数字表示这是第几步
 
 ### Technique
@@ -47,7 +47,7 @@ Demo： https://hangshuaibi.github.io/Evil-Path-Finder/
 
 - 选择地图生成算法
 
-<img src="README.assets/image-20200618103707806.png" alt="image-20200618103707806" style="zoom:50%;" />
+<img src="readme.assets/image-20200618103707806.png" alt="image-20200618103707806" style="zoom:50%;" />
 
 - 选择搜索算法（可选）
 
