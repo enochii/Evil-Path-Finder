@@ -5,6 +5,10 @@
 ### Overview
 
 > 若在 .pdf 文件无法查看动图(.gif)，可用 markdown 编辑器直接打开 readme.md。
+>
+> Demo： https://hangshuaibi.github.io/Evil-Path-Finder/ 
+>
+> PS: 部署完适配不太行，如果发现按钮有点问题，建议 `Ctrl -`缩小页面 .......
 
 ![demo](readme.assets/demo.gif)
 
@@ -21,6 +25,7 @@
 - 障碍（墙），可访问， WALL <img src="README.assets/image-20200618102637325.png" alt="image-20200618102637325" style="zoom:50%;" />
 - 空白，可访问， INITIAL <img src="README.assets/image-20200618102653519.png" alt="image-20200618102653519" style="zoom:50%;" />
 - 搜索到的最短路径， PATH <img src="README.assets/image-20200618102705556.png" alt="image-20200618102705556" style="zoom:50%;" />
+  - 路径上会有数字表示这是第几步
 
 ### Technique
 
