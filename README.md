@@ -6,7 +6,7 @@
 
 > 若在 .pdf 文件无法查看动图(.gif)，可用 markdown 编辑器直接打开 readme.md。
 >
-> Demo： https://hangshuaibi.github.io/Evil-Path-Finder/ 
+> Live Demo： https://enochii.github.io/Evil-Path-Finder/
 >
 > PS: 部署完适配不太行，如果发现按钮有点问题，建议 `Ctrl -`缩小页面 .......
 
