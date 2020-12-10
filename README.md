@@ -14,7 +14,9 @@
 
 本项目是一个**寻路算法的可视化**，同时**支持用户自定义算法**并上传演示（可试用`algorithm`文件夹下的部分 `*.js`如`bfs.js` 进行尝试 or `code_editor_sample`文件夹）。
 
-所以为什么叫 Evil-Path-Finder？请看 [这一小节](#为什么叫 Evil-Path-Finder......)
+**所以为什么叫 Evil-Path-Finder ？？？**
+
+因为支持用户自定义代码时用了 `eval()` 这个十分 **evil** 的不推荐使用的函数！通过 `eval` 求值得到用户自定义的 class ，这部分算是本项目一个很好玩的点吧~ 具体逻辑可以看[代码](src/components/Editor) 。
 
 点击`HOW TO PLAY?`可以呼出帮助界面（**简单教程请看 How to Run 小节**）
 
@@ -131,10 +133,6 @@ Demo： https://hangshuaibi.github.io/Evil-Path-Finder/
 
 > 内嵌了 React-Ace
 
-#### 为什么叫 Evil-Path-Finder......
-
-因为支持用户自定义代码时用了 `eval()` 这个十分 **evil** 的不推荐使用的函数！通过 `eval` 求值得到用户自定义的 class，这部分算是本项目一个很好玩的点吧~
-
 #### 基本介绍
 
 点击右侧的 `CODE EDITOR` 按钮可以呼出代码编辑器：
@@ -149,6 +147,8 @@ Demo： https://hangshuaibi.github.io/Evil-Path-Finder/
 
 > - 你可以将 custom_editor_example 文件下的 .js 复制到编辑器中
 > - 或者使用 algorithm/ 文件夹下的 dfs.js / bfs.js / bell-ford.js / astar.js / dijkstra.js
+>
+> PS：强烈建议不要手痒手写代码，最好参考以上的例子，因为 debug 体验挺差的。
 
 #### 重置算法和保存、删除
 
